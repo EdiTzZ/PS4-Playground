@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+	<link rel="shortcut icon" type="image/x-icon" href="../img/favicon.ico">
+    <title>PS4 7.02 Kernel Exploit</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="This site's description is not available due to the robots.txt">
+    <link rel="stylesheet" type="text/css" href="../css/metro-bootstrap.css">
+  </head>
+  <body>
+
+	<nav class="navbar navbar-inverse" role="navigation">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">PS4 7.02 Kernel Exploit</a>
+		</div>
+
+		<div class="collapse navbar-collapse navbar-ex1-collapse">
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="#">Welcome</a></li>
+		<li><a href="./mods/mt/mira/index.html">Mira</a></li>
+		<li><a href="./bin/index.html">BinLoader</a></li>
+		<li><a href="./hen/index.html">HEN</a></li>
+		<li><a href="./linux/index.html">Linux</a></li>
+		<li><a href="./ftp/index.html">FTP</a></li>
+		<li><a href="./dumper/index.html">Dumper</a></li>
+		<li><a href="./history-blocker/index.html">History Blocker</a></li>
+		<li><a href="./app2usb/index.html">App2USB</a></li>
+		<li><a href="./browser-unlocker/index.html">Enable Browser</a></li>
+		<li><a href="./bandr/index.html">DB Backup & Restore</a></li>
+		<li><a href="./updates/index.html">Updates</a></li>
+		<li><a href="./vr/index.html">VR</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="./mods/index.html">Game Mods & PS4 Tools</a></li>
+			    <li><a href="../index.html">PS4 Playground Index</a></li>
+				<li><a href="#">Compatible Firmware: 7.02</a></li>
+			</ul>
+		</div>
+	</nav>
+    <div class="container">
+		<div id="tooltip"></div>
+		<iframe id="appcacheInstaller" style="display: none;" src="install.html"></iframe>
+		<div class="jumbotron">
+      <h1>About PS4 7.02 Kernel Exploit</h1>
+      <p class="lead">
+	  Visit: <i><a href="https://github.com/ChendoChap/ps4-ipv6-uaf" target="_blank">ChendoChap's repo</a> // <a href="https://github.com/sleirsgoevy/ps4jb" target="_blank">sleirsgoevy's repo</a></i><br><br>
+		<b>## Summary</b><br>
+		Here you will find a full implementation of the "ipv6 uaf" kernel exploit for the PlayStation 4 for firmwares 7.00 - 7.02. It will allow you to run arbitrary code as kernel, to allow jailbreaking and kernel-level modifications to the system.<br>
+		This bug was originally discovered by <b>Fire30</b>, and subsequently found by <b>Andy Nguyen</b>.
+		<br><br>
+		<b>## Patches Included</b><br>
+		- Allow RWX (read-write-execute) memory mapping (mmap / mprotect)<br>
+		- Syscall instruction allowed anywhere<br>
+		- Dynamic Resolving (<code>sys_dynlib_dlsym</code>) allowed from any process<br>
+		- Custom system call #11 (<code>kexec()</code>) to execute arbitrary code in kernel mode<br>
+		- Allow unprivileged users to call <code>setuid(0)</code> successfully. Works as a status check, doubles as a privilege escalation<br>
+		- (sys_dynlib_load_prx) patch
+		<br><br>
+		<b>## Notes</b><br>
+		- The page will crash on successful kernel exploitation, this is normal<br>
+		- There are a few races involved with this exploit, losing one of them and attempting the exploit again might not immediately crash the system but stability will take a hit
+		<br><br>
+		Don't miss the <a href="mods/index.html"><b>Game Mods & PS4 Tools</b></a> section (top right corner)!
+		<br><br>
+		<font color="red"><b>I'm not responsible for any kind of damage on your PS4! Use it at your own risk!</b></font>
+		<br><br>
+		<b>## Contributors</b><br>
+		Massive credits to the following:
+		<br><br>
+		<a href="https://twitter.com/theflow0" rel="nofollow">TheFlow0</a><br>
+		<a href="https://github.com/Fire30/bad_hoist" rel="nofollow">Fire30</a><br>
+		<a href="https://github.com/ChendoChap/ps4-ipv6-uaf" rel="nofollow">ChendoChap</a><br>
+		<a href="https://github.com/synacktiv/PS4-webkit-exploit-6.XX" rel="nofollow">Synacktiv</a><br>
+		<a href="https://github.com/sleirsgoevy/ps4jb">sleirsgoevy</a><br>
+		<a href="https://twitter.com/_AlAzif">Al Azif</a><br>
+		All payload creators<br>
+		Anonymous
+      </p>
+      <hr />
+	  <center><a href="mods/mt/mira/index.html"><button type="button" class="btn btn-info">Mira</button></a>  <a href="bin/index.html"><button type="button" class="btn btn-primary">BinLoader</button></a>  <a href="hen/index.html"><button type="button" class="btn btn-danger">HEN</button></a>  <a href="linux/index.html"><button type="button" class="btn btn-success">Linux</button></a>  <a href="ftp/index.html"><button type="button" class="btn btn-primary">FTP</button></a>  <a href="dumper/index.html"><button type="button" class="btn btn-danger">Dumper</button></a>  <a href="history-blocker/index.html"><button type="button" class="btn btn-info">History Blocker</button></a>  <a href="app2usb/index.html"><button type="button" class="btn btn-primary">App2USB</button></a>  <a href="browser-unlocker/index.html"><button type="button" class="btn btn-success">Enable Browser</button></a>  <a href="bandr/index.html"><button type="button" class="btn btn-info">DB Backup & Restore</button></a>  <a href="updates/index.html"><button type="button" class="btn btn-danger">Updates</button></a>  <a href="vr/index.html"><button type="button" class="btn btn-success">VR</button></a></center>
+    </div>
+
+	  <hr>
+
+    <div class="footer">
+      <p>Copyright &copy; PS4 Playground <script>document.write('' + Date().substring(11, 15) + "");</script></p>
+    </div>
+
+    </div>
+  </body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+	<link rel="shortcut icon" type="image/x-icon" href="../../../../img/favicon.ico">
+    <title>PS4 6.72 (FAN)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="This site's description is not available due to the robots.txt">
+    <link rel="stylesheet" type="text/css" href="../../../../css/metro-bootstrap.css">
+	<script src="../../../exploit/jailbreak.js"></script>
+
+  </head>
+  <body>
+
+	<nav class="navbar navbar-inverse" role="navigation">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">PS4 6.72 Tools</a>
+		</div>
+
+		<div class="collapse navbar-collapse navbar-ex1-collapse">
+			<ul class="nav navbar-nav">
+		<li><a href="../../index.html">Game Mods</a></li>
+		<li class="active"><a href="../../mt/index.html">PS4 Tools</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="../../../index.html">PS4 6.72 Playground</a></li>
+			    <li><a href="../../../../index.html">PS4 Playground Index</a></li>
+				<li><a href="#">Compatible Firmware: 6.72</a></li>
+			</ul>
+		</div>
+	</nav>
+    <div class="container">
+
+		<div class="jumbotron">
+      <h1>Set FAN temp</h1>
+      <p class="lead">
+		<button type="button" class="btn btn-primary" onclick="load_fantemp(); return false"> Set Fan Threshold </button>  <select id="tempC"></select>&#176;C<br>The PS4's default temp is 79&#176;C<div id="status"></div>
+		<script>
+		for(var i=40; i<=79; i++){
+			var select = document.getElementById("tempC");
+			var option = document.createElement("OPTION");
+			select.options.add(option);
+			option.text = i;
+			option.value = i;
+		}
+		tempC.value = 60;
+		</script>
+		<script>
+		function load_fantemp() {
+			var temp = document.getElementById("tempC");
+			fanTemp = temp.options[temp.selectedIndex].text;
+			var script = document.createElement('script');script.src = "payload.js";document.getElementsByTagName('head')[0].appendChild(script);
+			var script = document.createElement('script');script.src = "../../../exploit/loader.js";document.getElementsByTagName('head')[0].appendChild(script);
+			var msg = "Fan set to " + fanTemp + "&#176;C";
+			document.getElementById('status').innerHTML = "<h1 style='color:blue;font-size: 25px;'><#> " + msg + "</h1>";
+		}
+		</script>
+      </p>
+      <hr />
+    </div>
+
+	  <hr>
+
+    <div class="footer">
+      <p>Copyright &copy; PS4 Playground <script>document.write('' + Date().substring(11, 15) + "");</script></p>
+    </div>
+
+    </div>
+  </body>
+</html>

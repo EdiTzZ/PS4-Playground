@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+	<link rel="shortcut icon" type="image/x-icon" href="../img/favicon.ico">
+    <title>PS4 6.72 Kernel Exploit</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="This site's description is not available due to the robots.txt">
+    <link rel="stylesheet" type="text/css" href="../css/metro-bootstrap.css">
+  </head>
+  <body>
+
+	<nav class="navbar navbar-inverse" role="navigation">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">PS4 6.72 Kernel Exploit</a>
+		</div>
+
+		<div class="collapse navbar-collapse navbar-ex1-collapse">
+			<ul class="nav navbar-nav">
+		<li class="active"><a href="#">Welcome</a></li>
+		<li><a href="./hen/index.html">HEN</a></li>
+		<li><a href="./mira/index.html">Mira</a></li>
+		<li><a href="./bin/index.html">BinLoader</a></li>
+		<li><a href="./ftp/index.html">FTP</a></li>
+		<li><a href="./dumper/index.html">Dumper</a></li>
+		<li><a href="./blocker/index.html">Blocker</a></li>
+		<li><a href="./linux/index.html">Linux Loader</a></li>
+		<li><a href="./app2usb/index.html">App2USB</a></li>
+		<li><a href="./bandr/index.html">Backup + Restore</a></li>
+		<li><a href="./updates/index.html">Updates</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="./mods/index.html">Game Mods & PS4 Tools</a></li>
+			    <li><a href="../index.html">PS4 Playground Index</a></li>
+				<li><a href="#">Compatible Firmware: 6.72</a></li>
+			</ul>
+		</div>
+	</nav>
+    <div class="container">
+		<div id="tooltip"></div>
+		<iframe id="appcacheInstaller" style="display: none;" src="install.html"></iframe>
+		<div class="jumbotron">
+      <h1>About PS4 6.72 Kernel Exploit</h1>
+      <p class="lead">
+	  <i><a href="https://github.com/sleirsgoevy/ps4jb/blob/e6c3d85c69720409d4f7e07a3025bb05b7052b5b/README.md" target="_blank">(Original by sleirsgoevy)</a></i><br>
+		<b>## Summary</b><br>
+		This is a full chain exploit for PS4 firmware 6.72. Basically this is TheFlow's POC together with PS4-specific kROP & kernel patches. Mira is used as a HEN payload.
+		<br><br>
+		<b>## READ THIS CAREFULLY BEFORE PROCEEDING</b><br>
+		This ONLY works on FW 6.72. If you are on a lower firmware, download a 6.72 retail update file <a href="https://sce.party/firmwares" target="_blank">here</a> and update your system. If you are on a higher firmware (e.g. 7.02), your console <b>CAN'T BE HACKED</b> yet.<br>
+		<br>
+		   Click on a link. In about 20 seconds you'll get an alert saying "You're all set!", followed by "There is not enough free system memory". This means that everything has gone well.<br>
+		   If something went wrong during the process, you may get an alert saying "Jailbreak failed! Reboot your PS4 and try again.". In this case you must reboot your PS4.<br>
+		   If the system hangs for more than a minute (may require more time on slow Internet connections), reboot your PS4 and try again.<br>
+		   If the system crashes (looks like instant powerdown), press the power button on the PS4 (NOT on the gamepad) until it turns on again, then retry.<br>
+		   <br>
+		   <b>For advanced users:</b> To load your own payloads using NetCat, run Payload Loader and send the payload to TCP port 9020.<br>
+		   Claims that Mira does not have HEN are false, do not believe them!<br>
+		<br>
+		This exploit does crash and hang. Sometimes you even have to retry 10 times to get the jailbreak.<br>
+		<br>
+		Note: the speed of the exploit heavily depends on your network speed. If you have a poor network you may have to wait for a few minutes.<br>
+		<br>
+		<font color="red"><b>I'm not responsible for any kind of damage on your PS4! Use it at your own risk!</b></font><br>
+		<br><br>
+		<b>## Contributors</b><br>
+		Massive credits to the following:
+		<br><br>
+		<a href="https://twitter.com/Fire30_" rel="nofollow">Fire30</a> - for the WebKit exploit<br>
+		<a href="https://twitter.com/theflow0" rel="nofollow">TheFlow</a> - for the kernel exploit<br>
+		<a href="https://twitter.com/sleirsgoevy" rel="nofollow">sleirsgoevy</a> - for the PS4 6.72 JB<br>
+		<a href="https://github.com/xvortex" rel="nofollow">DarkModderVC</a> - for stabilising the exploit<br>
+		<a href="https://twitter.com/leeful74" rel="nofollow">Leeful74</a> - for stabilising the exploit<br>
+		<a href="https://twitter.com/_AlAzif" rel="nofollow">Al Azif</a> - for porting payloads<br>
+      </p>
+      <hr />
+	  <center><a href="hen/index.html"><button type="button" class="btn btn-info">HEN</button></a>  <a href="mira/index.html"><button type="button" class="btn btn-primary">Mira</button></a>  <a href="bin/index.html"><button type="button" class="btn btn-danger">BinLoader</button></a>  <a href="ftp/index.html"><button type="button" class="btn btn-success">FTP</button></a>  <a href="dumper/index.html"><button type="button" class="btn btn-primary">Dumper</button></a>  <a href="blocker/index.html"><button type="button" class="btn btn-danger">Blocker</button></a>  <a href="linux/index.html"><button type="button" class="btn btn-info">Linux Loader</button></a>  <a href="app2usb/index.html"><button type="button" class="btn btn-primary">App2USB</button></a>  <a href="bandr/index.html"><button type="button" class="btn btn-success">Backup + Restore</button></a>  <a href="updates/index.html"><button type="button" class="btn btn-danger">Updates</button></a></center>
+    </div>
+
+	  <hr>
+
+    <div class="footer">
+      <p>Copyright &copy; PS4 Playground <script>document.write('' + Date().substring(11, 15) + "");</script></p>
+    </div>
+
+    </div>
+  </body>
+</html>

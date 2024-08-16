@@ -1,0 +1,79 @@
+<html>
+	<head>
+	<title>PS4 Playground (Auto Detect)</title>
+	<link rel="shortcut icon" type="image/x-icon" href="../img/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="../css/metro-bootstrap.css">
+	</head>
+	<script>
+      var disableFeatures = false;
+      var ua = navigator.userAgent;
+      var playstationOrNot = ua.substring(ua.indexOf("5.0 (") + 5, ua.indexOf(") Apple") - 7);
+
+      if(playstationOrNot != "PlayStation")
+      {
+      alert("No PS4 detected!")
+        document.write('<div class="alert alert-danger"><strong>No Playstation 4 detected!</strong></div>');
+        window.stop();  
+if ($.browser.msie) {document.execCommand("Stop");};
+        disableFeatures = true;
+      }
+
+      else if(ua.substring(ua.indexOf("5.0 (") + 19, ua.indexOf(") Apple")) == "1.76")
+      {
+	  window.location.href = "https://ps4.editzz.net/1.76/index.html";
+if ($.browser.msie) {document.execCommand("Stop");}; 
+        disableFeatures = true;
+      }
+      else if(ua.substring(ua.indexOf("5.0 (") + 19, ua.indexOf(") Apple")) == "3.55")
+      {
+      window.location.href = "https://ps4.editzz.net/3.55/index.html";
+if ($.browser.msie) {document.execCommand("Stop");}; 
+        disableFeatures = true;
+      }
+      else if(ua.substring(ua.indexOf("5.0 (") + 19, ua.indexOf(") Apple")) == "4.05")
+      {
+      window.location.href = "https://ps4.editzz.net/4.05/index.html";
+if ($.browser.msie) {document.execCommand("Stop");}; 
+        disableFeatures = true;
+      }
+      else if(ua.substring(ua.indexOf("5.0 (") + 19, ua.indexOf(") Apple")) == "4.55")
+      {
+      window.location.href = "https://ps4.editzz.net/4.55/index.html";
+if ($.browser.msie) {document.execCommand("Stop");}; 
+        disableFeatures = true;
+      }
+      else if(ua.substring(ua.indexOf("5.0 (") + 19, ua.indexOf(") Apple")) == "4.74")
+      {
+      window.location.href = "https://ps4.editzz.net/4.74/index.html";
+if ($.browser.msie) {document.execCommand("Stop");}; 
+        disableFeatures = true;
+      }
+	  else if(ua.substring(ua.indexOf("5.0 (") + 19, ua.indexOf(") Apple")) == "5.05")
+      {
+      window.location.href = "https://ps4.editzz.net/5.05/index.html";
+if ($.browser.msie) {document.execCommand("Stop");}; 
+        disableFeatures = true;
+      }
+	  else if(ua.substring(ua.indexOf("5.0 (") + 19, ua.indexOf(") Apple")) == "5.07")
+      {
+      window.location.href = "https://ps4.editzz.net/5.05/index.html";
+if ($.browser.msie) {document.execCommand("Stop");}; 
+        disableFeatures = true;
+      }
+      else if(ua.substring(ua.indexOf("5.0 (") + 19, ua.indexOf(") Apple")) == "6.72")
+      {
+      window.location.href = "https://ps4.editzz.net/6.72/index.html";
+if ($.browser.msie) {document.execCommand("Stop");}; 
+        disableFeatures = true;
+      }
+	  else if(ua.substring(ua.indexOf("5.0 (") + 19, ua.indexOf(") Apple")) == "7.02")
+      {
+      window.location.href = "https://ps4.editzz.net/7.02/index.html";
+if ($.browser.msie) {document.execCommand("Stop");}; 
+        disableFeatures = true;
+      }
+      else
+      {
+      }
+    </script>
+</html>

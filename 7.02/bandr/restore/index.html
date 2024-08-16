@@ -1,0 +1,65 @@
+<html>
+<head>
+<title>PS4 7.02 (DB Restore)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" type="image/x-icon" href="../../../img/favicon.ico">
+</head>
+<body onload="go()">
+<a href="../index.html">Back to PS4 Exploit Page</a><br>
+<script>
+if(document.cookie.indexOf('kex=0') >= 0)
+    window.location.href = document.referrer;
+</script>
+<script>
+function print(){}
+
+var scriptCode = '';
+
+function preloadScripts(lst)
+{
+    for(var i = 0; i < lst.length; i++)
+    {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', lst[i], false);
+        xhr.send('');
+        scriptCode += xhr.responseText + '\n';
+    }
+}
+
+function done()
+{
+    if(main_ret == 0 || main_ret == 179)
+    {
+        alert("You're all set!\n Restore Loaded !");
+        read_ptr_at(0);
+    }
+    else
+        alert("Jailbreak failed! Reboot your PS4 and try again.");
+}
+
+window.midExploit = function()
+{
+    preloadScripts(['../../exploit/702.js', '../../exploit/c-code.js', '../../exploit/mira702/mira.js', 'Restore.js', '../../exploit/mira702/c-code.js'], go);
+}
+
+window.postExploit = function()
+{
+    document.cookie = 'kex=0';
+    setTimeout(function() //update the screen one last time...
+    {
+        eval.call(window, scriptCode);
+        done();
+    }, 100);
+};
+</script>
+<script src="../../exploit/utils.js"></script>
+<script src="../../exploit/int64.js"></script>
+<script src="../../exploit/ps4.js"></script>
+<button id="input1" onfocus="handle2()"></button>
+<button id="input2"></button>
+<button id="input3" onfocus="handle2()"></button>
+<select id="select1">
+<option value="value1">Value1</option>
+</select>
+</body>
+</html>

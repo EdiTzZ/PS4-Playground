@@ -1,0 +1,95 @@
+<!-- Hold The Door -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+	<link rel="shortcut icon" type="image/x-icon" href="../img/favicon.ico">
+    <title>PS4 5.05 Kernel Exploit</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="This site's description is not available due to the robots.txt">
+    <link rel="stylesheet" type="text/css" href="../css/metro-bootstrap.css">
+  </head>
+  <body>
+
+	<nav class="navbar navbar-inverse" role="navigation">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">PS4 5.05 Kernel Exploit</a>
+		</div>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse navbar-ex1-collapse">
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="#">Welcome</a></li>
+		<li><a href="./mods/mt/mira/index.html">Mira/HEN</a></li>
+		<li><a href="./bin/index.html">BinLoader</a></li>
+		<li><a href="./hen/index.html">HEN</a></li>
+		<li><a href="./linux/index.html">Linux</a></li>
+		<li><a href="./ftp/index.html">FTP</a></li>
+		<li><a href="./dumper/index.html">Dumper</a></li>
+		<li><a href="./blocker/index.html">Blocker</a></li>
+		<li><a href="./app2usb/index.html">App2USB</a></li>
+		<li><a href="./rpsplus/index.html">ReactPSPLUS</a></li>
+		<li><a href="./vr/index.html">VR</a></li>
+		<li><a href="./ps4ren/index.html">PS4REN</a></li>
+		<li><a href="./avatar/index.html">AvatarTools</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="./mods/index.html">Game Mods & PS4 Tools</a></li>
+			    <li><a href="../index.html">PS4 Playground Index</a></li>
+				<li><a href="#">Compatible Firmware: 5.05 - 5.07</a></li>
+			</ul>
+		</div><!-- /.navbar-collapse -->
+	</nav>
+    <div class="container">
+
+		<!-- Jumbotron -->
+		<div class="jumbotron">
+      <h1>About PS4 5.05 Kernel Exploit</h1>
+      <p class="lead">
+	  <i><a href="https://github.com/Cryptogenic/PS4-5.05-Kernel-Exploit/blob/master/README.md" target="_blank">(Original by SpecterDev)</a></i><br>
+		<b>## Summary</b><br>
+		In this project you will find a full implementation of the second "bpf" kernel exploit for the PlayStation 4 on 5.05. It will allow you to run arbitrary code as kernel, to allow jailbreaking and kernel-level modifications to the system. This exploit also contains autolaunching code for Mira and Vortex's HEN payload. Subsequent loads will launch the usual payload launcher.
+		This bug was discovered by qwertyoruiopz, and can be found hosted on his website <a href="http://crack.bargains/505k/" rel="nofollow">here</a>. The <a href="https://cryptogenic.github.io/PS4-5.05-Kernel-Exploit/" rel="nofollow">GitHub Pages site</a> automatically generated from this repository should also work.
+		<br><br>
+		<b>## Patches Included</b><br>
+		Disable kernel write protection
+		Allow RWX (read-write-execute) memory mapping
+		Syscall instruction allowed anywhere
+		Dynamic Resolving (<code>sys_dynlib_dlsym</code>) allowed from any process
+		Custom system call #11 (<code>kexec()</code>) to execute arbitrary code in kernel mode
+		Allow unprivileged users to call <code>setuid(0)</code> successfully. Works as a status check, doubles as a privilege escalation.
+		<br><br>
+		<b><a href="https://github.com/Cryptogenic/Exploit-Writeups/blob/master/FreeBSD/PS4%205.05%20BPF%20Double%20Free%20Kernel%20Exploit%20Writeup.md" target="_blank">Kernel Exploit Write Up</a></b><br>
+		<br><br>
+		<b>## Contributors</b><br>
+		Massive credits to the following:
+		<br><br>
+		<a href="https://twitter.com/qwertyoruiopz" rel="nofollow">qwertyoruiopz</a><br>
+		<a href="https://twitter.com/flat_z" rel="nofollow">Flatz</a><br>
+		<a href="https://twitter.com/specterdev">Specter</a><br>
+		<a href="https://github.com/xvortex">Vortex</a><br>
+		<a href="https://github.com/OpenOrbis/">OpenOrbis Team</a><br>
+		Anonymous
+      </p>
+      <hr />
+	  	  <center><a href="mods/mt/mira/index.html"><button type="button" class="btn btn-info">Mira/HEN</button></a>  <a href="bin/index.html"><button type="button" class="btn btn-primary">BinLoader</button></a>  <a href="hen/index.html"><button type="button" class="btn btn-danger">HEN</button></a>  <a href="linux/index.html"><button type="button" class="btn btn-success">Linux</button></a>  <a href="ftp/index.html"><button type="button" class="btn btn-primary">FTP</button></a>  <a href="dumper/index.html"><button type="button" class="btn btn-danger">Dumper</button></a>  <a href="blocker/index.html"><button type="button" class="btn btn-info">Blocker</button></a>  <a href="app2usb/index.html"><button type="button" class="btn btn-primary">App2USB</button></a>  <a href="rpsplus/index.html"><button type="button" class="btn btn-success">ReactPSPLUS</button></a>  <a href="vr/index.html"><button type="button" class="btn btn-danger">VR</button></a>  <a href="ps4ren/index.html"><button type="button" class="btn btn-info">PS4REN</button></a>  <a href="avatar/index.html"><button type="button" class="btn btn-success">AvatarTools</button></a></center>
+    </div>
+
+	  <hr>
+
+    <!-- Site footer -->
+    <div class="footer">
+      <p>Copyright &copy; PS4 Playground <script>document.write('' + Date().substring(11, 15) + "");</script></p>
+    </div>
+
+    </div> <!-- /container -->
+  </body>
+</html>

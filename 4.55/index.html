@@ -1,0 +1,96 @@
+<!-- Hold The Door -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+	<link rel="shortcut icon" type="image/x-icon" href="../img/favicon.ico">
+    <title>PS4 4.55 Kernel Exploit</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="This site's description is not available due to the robots.txt">
+    <link rel="stylesheet" type="text/css" href="../css/metro-bootstrap.css">
+  </head>
+  <body>
+
+	<nav class="navbar navbar-inverse" role="navigation">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">PS4 4.55 Kernel Exploit</a>
+		</div>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse navbar-ex1-collapse">
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="#">Welcome</a></li>
+        <li><a href="./bin/index.html">BinLoader</a></li>
+		<li><a href="./hen/index.html">HEN</a></li>
+		<li><a href="./ftps4/index.html">FTP (+UART)</a></li>
+		<li><a href="./blocker/index.html">Update Blocker</a></li>
+		<li><a href="./dumper/index.html">Dumper</a></li>
+		<li><a href="./webbrws/index.html">WebBrowser</a></li>
+		<li><a href="./linux/index.html">LinuxLoader</a></li>
+		<li><a href="./pkg2usb/index.html">PKG2USB</a></li>
+		<li><a href="./vr/index.html">EnableVR</a></li>
+		<li><a href="./avatar/index.html">Avatar Tools</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="./mods/index.html">Game Mods & PS4 Tools</a></li>
+			    <li><a href="../index.html">PS4 Playground Index</a></li>
+				<li><a href="#">Compatible Firmware: 4.55</a></li>
+			</ul>
+		</div><!-- /.navbar-collapse -->
+	</nav>
+    <div class="container">
+
+		<!-- Jumbotron -->
+		<div class="jumbotron">
+      <h1>About PS4 4.55 Kernel Exploit</h1>
+      <p class="lead">
+	  <i><a href="https://github.com/Cryptogenic/PS4-4.55-Kernel-Exploit/blob/master/README.md" target="_blank">(Original by SpecterDev)</a></i><br>
+		<b>## Summary</b><br>
+		This is a full implementation of the "bpf" kernel exploit for the PlayStation 4 on 4.55. It will allow you to run arbitrary code as kernel, to allow jailbreaking and kernel-level modifications to the system. This release however, does not contain any code related to defeating anti-piracy mechanisms or running homebrew. This exploit does include a loader that listens for payloads on port 9020 and will execute them upon receival.
+		<br><br>
+		<b>## Patches Included</b><br>
+		The following patches are made by default in the kernel ROP chain:<br>
+		1) Disable kernel write protection<br>
+		2) Allow RWX (read-write-execute) memory mapping<br>
+		3) Syscall instruction allowed anywhere<br>
+		4) Custom system call #11 (kexec()) to execute arbitrary code in kernel mode<br>
+		5) Allow unprivileged users to call `setuid(0)` successfully. Works as a status check, doubles as a privilege escalation.
+		<br><br>
+		<b><a href="https://github.com/Cryptogenic/Exploit-Writeups/blob/master/WebKit/setAttributeNodeNS%20UAF%20Write-up.md" target="_blank">WebKit Write Up</a></b><br>
+		<b><a href="https://github.com/Cryptogenic/Exploit-Writeups/blob/master/FreeBSD/PS4%204.55%20BPF%20Race%20Condition%20Kernel%20Exploit%20Writeup.md" target="_blank">Kernel Write Up</a></b><br>
+		<br><br>
+		<b>## Contributors</b><br>
+		I was not alone in this exploit's development, and would like to thank those who helped me along the way below.
+		<br><br>
+		- <a href="https://twitter.com/specterdev" target="_blank">SpecterDev</a><br>
+		- <a href="https://twitter.com/qwertyoruiopz" target="_blank">qwertyoruiopz</a><br>
+		- <a href="https://twitter.com/flat_z" target="_blank">Flatz</a><br>
+		- Anonymous<br><br>
+      </p>
+      <hr />
+	  	  <center><a href="bin/index.html"><button type="button" class="btn btn-danger">Bin Loader</button></a>  <a href="hen/index.html"><button type="button" class="btn btn-success">HEN</button></a>  <a href="ftps4/index.html"><button type="button" class="btn btn-primary">FTP (+ UART)</button></a>  <a href="blocker/index.html"><button type="button" class="btn btn-info">Update Blocker (+ FTP)</button></a>  <a href="dumper/index.html"><button type="button" class="btn btn-danger">Dumper</button></a>  <a href="webbrws/index.html"><button type="button" class="btn btn-info">WebBrowser</button></a>   <a href="linux/index.html"><button type="button" class="btn btn-primary">Linux Loader</button></a>   <a href="pkg2usb/index.html"><button type="button" class="btn btn-success">PKG2USB</button></a>   <a href="vr/index.html"><button type="button" class="btn btn-danger">EnableVR</button></a>   <a href="avatar/index.html"><button type="button" class="btn btn-info">Avatar Tools</button></a></center>
+    </div>
+
+	  <hr>
+
+    <!-- Site footer -->
+    <div class="footer">
+      <p>Copyright &copy; PS4 Playground <script>document.write('' + Date().substring(11, 15) + "");</script> || Version 1.2.0</p>
+    </div>
+
+    </div> <!-- /container -->
+    <!-- /container -->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+  </body>
+</html>

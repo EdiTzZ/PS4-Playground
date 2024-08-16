@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html manifest="672.appcache">
+	<head></head>
+    installer.html
+    <pre id='status'></pre>
+    <script type="text/javascript">
+      var ua = navigator.userAgent;
+      var playstationOrNot = ua.substring(ua.indexOf("5.0 (") + 5, ua.indexOf(") Apple") - 7);
+      if(playstationOrNot == "PlayStation")
+      {
+		var appcache = window.applicationCache;
+appcache.addEventListener('cached', logEvent, false);
+appcache.addEventListener('checking', logEvent, false);
+appcache.addEventListener('downloading', logEvent, false);
+appcache.addEventListener('error', logEvent, false);
+appcache.addEventListener('noupdate', logEvent, false);
+appcache.addEventListener('obsolete', logEvent, false);
+appcache.addEventListener('progress', logEvent, false);
+appcache.addEventListener('updateready', logEvent, false);
+
+if (window.applicationCache !== undefined && window.applicationCache.status == window.applicationCache.IDLE){
+	changeButtonToInstalled();
+}
+
+function setStatus(message) {
+    window.parent.document.getElementById("tooltip").innerHTML = message;
+}
+
+function changeButtonToInstalled() {
+
+}
+
+function logEvent(e) {
+    switch (e.type) {
+      case "progress":
+        message = "<b>CACHE STATUS:</b> Installing offline version... ";
+        if (e.lengthComputable) {
+          message += Math.round(e.loaded / e.total * 100) + "%";
+        }
+        break;
+      case "noupdate":
+        message = "<b>CACHE STATUS:</b> You're running the latest version.";
+        changeButtonToInstalled();
+        break;
+      case "obsolete":
+        message = "<b>CACHE STATUS:</b> Offline mode has been uninstalled.";
+        break;
+      case "cached":
+        message = "<b>CACHE STATUS:</b> Everything loaded! Now you can go offline!";
+        changeButtonToInstalled();
+        break;
+      case "checking":
+        message = "<b>CACHE STATUS:</b> Checking for a new version...";
+        break;
+      case "downloading":
+        message = "<b>CACHE STATUS:</b> Downloading...";
+        break;
+      case "updateready":
+        message = "<b>CACHE STATUS:</b> A new version is ready. Click to <a href='javascript:window.location.reload();' onclick='return confirm(\"This will reload the Playground in cache. Continue?\");'>upgrade</a>.";
+        window.parent.appCacheUpdateReady();
+        break;
+      case "error":
+        switch (window.applicationCache.status) {
+          case window.applicationCache.IDLE:
+            message = "<b>CACHE STATUS:</b> Everything loaded! Now you can go offline!";
+            break;
+          case window.applicationCache.UNCACHED:
+            message = "<b>CACHE STATUS:</b> Error loading offline version. Please <a href='javascript:window.location.reload();' onclick='return confirm(\"Try to download again. Continue?\");'>try again</a>.";
+            break;
+          case window.applicationCache.CHECKING:
+          case window.applicationCache.DOWNLOADING:
+          case window.applicationCache.UPDATEREADY:
+          case window.applicationCache.OBSOLETE:
+          default:
+            message = "<b>CACHE STATUS:</b> Error " + window.applicationCache.status + " loading offline version. Please <a href='javascript:window.location.reload();' onclick='return confirm(\"Try to download again. Continue?\");'>try again</a>.";
+            break;
+        }
+        break;
+      default:
+        message = "[" + e.type + "]";
+    }
+    document.getElementById("status").innerHTML += e.type + ": " + message + "\n";
+    setStatus(message);
+}
+}
+      else
+      {
+		alert("No PS4 detected! Caching disabled!")
+        document.write('<div class="alert alert-danger"><strong>No PS4 detected! Caching disabled!</strong></div>');
+        window.stop();  
+		if ($.browser.msie) {document.execCommand("Stop");};
+			disableFeatures = true;
+      }
+    </script>
+  </body>
+</html>

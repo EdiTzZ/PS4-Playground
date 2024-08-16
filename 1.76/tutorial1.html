@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<title>PS4 Tutorials</title>
+		
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+		
+	</head>
+	
+	<body onload="load()">
+		<div class="header">
+			<img class="auto-style2" height="29" src="icons/tut1.png" width="800" />
+			<h2>kR105, SonyUSA, Fx0day</h2>
+			
+			<img class="auto-style2" height="200" src="icons/ubuntu.png" width="200" />
+			
+			<br>
+			<br>
+			
+			<h3>The Steps are for End Users with a 1.76 PS4. Install a Linux-Distribution on USB and Run on your PS4. Guide is based on the tutorials from SonyUSA and fx0day.</h3>
+		</div>
+		
+		<hr>
+		
+		<div class="box-container">
+			<div class="box">
+				<h2>Prepare the Installation PC/USB:</h2>
+				
+				<img class="auto-style2" height="680" src="icons/1.png" width="671" />
+				
+				<br>
+				<br>
+				
+				<div>
+					1. Install VirtualBox-4.3.36 and Oracle_VM_VirtualBox_Extension_Pack-4.3.36, produce a new Virtaul Machine (Ubuntu) without virtual hard disk<br><br>Installiere VirtualBox-4.3.36 und Oracle_VM_VirtualBox_Extension_Pack-4.3.36, erzeuge eine neue virtuelle Maschine (Ubuntu) ohne virtuelle Festplatte
+				</div>
+				
+				<br>
+				
+				<img class="auto-style2" height="667" src="icons/2.png" width="983" />
+				
+				<br>
+				<br>
+				
+				<div>
+					2. Open Settings -> Storage and click on the CD icon to open ubuntu-14.04.4-desktop-amd64.iso<br><br>Oeffne Einstellungen -> Massenspeicher und klicke auf das CD Symbol um ubuntu-14.04.4-desktop-amd64.iso zu oeffnen
+				</div>
+				
+				<br>
+				
+				<img class="auto-style2" height="768" src="icons/3.png" width="1024" />
+				
+				<br>
+				<br>
+				
+				<div>
+					3. Start your created VM and open Devices -> USB and choose your first USB stick, Install Ubuntu<br><br>Starte deine erstellte VM und oeffne Geraete -> USB-Geraete und waehle deinen ersten USB-Stick aus, installiere Ubuntu
+				</div>
+				
+			</div>
+			
+			<div class="box">
+				<h2>Installation:</h2>
+				
+				<img class="auto-style2" height="577" src="icons/4.jpg" width="1024" />
+				
+				<br>
+				<br>
+				
+				<div>
+					4. Connect the first USB stick (Ubuntu) and a USB keyboard to the PS4 and type:<br>fdisk -l<br>mount /dev/sdb6 newroot/<br>exec switch_root /newroot/ /newroot/sbin/init<br><br>Verbinde den ersten USB-Stick und eine USB-Tastatur mit deiner PS4 und tippe:<br>fdisk -l<br>mount /dev/sdb6 newroot/<br>exec switch_root /newroot/ /newroot/sbin/init
+				</div>
+				
+				<br>
+				
+				<img class="auto-style2" height="577" src="icons/5.jpg" width="1024" />
+				
+				<br>
+				<br>
+				
+				<div>
+					Info: If your Linux partition is a other device as sdb6, you have to change your text input. Sometimes you have to retype<br>"exec switch_root /newroot/ /newroot/sbin/init" again. It could take a few minutes to load the distribution, after this, you should see Ubuntu on your PS4.<br><br>Info: Falls deine Linux-Partition eine andere als sdb6 ist, musst du deine Texteingabe aendern. Manchmal musst du "exec switch_root /newroot/ /newroot/sbin/init"<br>nochmal eingeben. Es kann ein paar Minuten dauern, um die Distribution zu laden, danach solltest du Ubuntu auf deriner PS4 sehen.
+				</div>
+				
+			</div>
+			
+		</div>
+		
+		<div id="log"></div>
+	</body>
+</html>

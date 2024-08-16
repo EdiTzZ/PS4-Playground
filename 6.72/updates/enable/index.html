@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+	<link rel="shortcut icon" type="image/x-icon" href="../../../img/favicon.ico">
+    <title>PS4 6.72 (Enable Updates)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="This site's description is not available due to the robots.txt">
+    <link rel="stylesheet" type="text/css" href="../../../css/metro-bootstrap.css">
+	<script src="../../exploit/jailbreak.js"></script>
+	<script>	
+	function load_payload() {
+	var script = document.createElement('script');script.src = "payload.js";document.getElementsByTagName('head')[0].appendChild(script);
+	var script = document.createElement('script');script.src = "../../exploit/loader.js";document.getElementsByTagName('head')[0].appendChild(script);
+	payload_finished();
+	}
+
+	function payload_finished() {
+	document.write("<h1 style='color:blue;font-size: 25px;'><#> Payload loaded!\nExit this page with the PS button!</h1>");
+	}
+</script>
+  </head>
+  <body>
+
+	<nav class="navbar navbar-inverse" role="navigation">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">PS4 6.72 Kernel Exploit</a>
+		</div>
+		<div class="collapse navbar-collapse navbar-ex1-collapse">
+			<ul class="nav navbar-nav">
+		<li><a href="../../index.html">Welcome</a></li>
+		<li><a href="../../hen/index.html">HEN</a></li>
+		<li><a href="../../mira/index.html">Mira</a></li>
+		<li><a href="../../bin/index.html">BinLoader</a></li>
+		<li><a href="../../ftp/index.html">FTP</a></li>
+		<li><a href="../../dumper/index.html">Dumper</a></li>
+		<li><a href="../../blocker/index.html">Blocker</a></li>
+		<li><a href="../../linux/index.html">Linux Loader</a></li>
+		<li><a href="../../app2usb/index.html">App2USB</a></li>
+		<li><a href="../../bandr/index.html">Backup + Restore</a></li>
+		<li class="active"><a href="../index.html">Updates</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="../../mods/index.html">Game Mods & PS4 Tools</a></li>
+			    <li><a href="../../../index.html">PS4 Playground Index</a></li>
+				<li><a href="#">Compatible Firmware: 6.72</a></li>
+			</ul>
+		</div>
+	</nav>
+    <div class="container">
+
+		<div class="jumbotron">
+      <h1>Enable Updates</h1>
+      <p class="lead">
+	  <br>Log:<br>
+	  <script>
+	  document.write("<h1 style='color:blue;font-size: 25px;'><#> Loading payload...</h1>");
+	  document.write('<script>load_payload();<\/scr' + 'ipt>');
+	  </script>
+      </p>
+      <hr />
+    </div>
+
+	  <hr>
+
+    <div class="footer">
+      <p>Copyright &copy; PS4 Playground <script>document.write('' + Date().substring(11, 15) + "");</script></p>
+    </div>
+
+    </div>
+  </body>
+</html>
