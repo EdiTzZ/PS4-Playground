@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PS4 Playground</title>
+<link rel="shortcut icon" type="image/x-icon" href="../img/favicon.ico">
+<style>
+html,body{margin:0;background:#000;color:#fff;font-family:sans-serif;height:100%;overflow:hidden}
+#loader{position:absolute;left:50%;top:50%;margin:-75px 0 0 -75px;border:10px solid #222;border-radius:50%;border-top:10px solid #044595;border-left:10px solid #044595;width:120px;height:120px;-webkit-animation:spin 1s linear infinite}
+.info{display:none;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:28px}
+#console{position:absolute;left:20px;right:20px;top:20px;bottom:20px;margin:0;overflow:auto;white-space:pre-wrap;font-family:monospace;font-size:16px;line-height:1.35;background:#000;color:#fff;z-index:2}
+#footer,#awaiting,#allset,#fail,#badfw{display:none}
+#ckbaj{display:none}
+@-webkit-keyframes spin{0%{-webkit-transform:rotate(0deg)}100%{-webkit-transform:rotate(360deg)}}
+</style></head><body>
+<script>
+window.didload=0; window.didpost=0;
+window.onload=function(){window.didload=1;if(window.didpost==1&&window.stage2)setTimeout(window.stage2,1500)};
+window.postExpl=function(){window.didpost=1;if(window.didload==1&&window.stage2)setTimeout(window.stage2,1500)};
+function allset(){document.getElementById("loader").style.display="none";document.getElementById("allset").style.display="block";}
+function awaitpl(){document.getElementById("loader").style.display="none";document.getElementById("awaiting").style.display="block";}
+function fail(){document.getElementById("loader").style.display="none";document.getElementById("fail").style.display="block";}
+</script>
+<div id="loader"></div>
+<div id="awaiting" class="info">Awaiting Payload...</div>
+<div id="allset" class="info">You're all set!</div>
+<div id="fail" class="info">Something went wrong :(</div>
+<div id="badfw" class="info">Unsupported firmware</div>
+<div id="footer"></div>
+<input id="ckbaj" type="checkbox">
+<pre id="console"></pre>
+<script>
+(function(){
+var params=new URLSearchParams(location.search);
+var requested=params.get('payload')||'GoldHEN';
+var payloads={GoldHEN:'../payloads/GoldHEN/GoldHEN.bin',HEN:'../payloads/HEN/HEN.bin',FTP:'../payloads/Bins/Tools/ftp.bin',App2USB:'../payloads/Bins/Tools/app2usb.bin',HistoryBlocker:'../payloads/Bins/Tools/history-blocker.bin',BrowserUnlocker:'../payloads/Bins/Tools/enable-browser.bin',BackupDB:'../payloads/Bins/Tools/backup.bin',RestoreDB:'../payloads/Bins/Tools/restore.bin',EnableUpdates:'../payloads/Bins/Tools/enable-updates.bin',DisableUpdates:'../payloads/Bins/Tools/disable-updates.bin',DisableASLR:'../payloads/Bins/Tools/disable-aslr.bin',ExitIDU:'../payloads/Bins/Tools/exit-idu.bin',RIFRenamer:'../payloads/Bins/Tools/rif-renamer.bin',PUPDecrypt:'../payloads/Bins/Tools/pup-decrypt.bin',PS4Debug:'../payloads/Bins/Tools/ps4debug.bin',ToDex:'../payloads/Bins/Tools/ToDex.bin',ToDev:'../payloads/Bins/Tools/ToDev.bin',ToCex:'../payloads/Bins/Tools/ToCex.bin',ToKratos:'../payloads/Bins/Tools/ToKratos.bin',KernelClock:'../payloads/Bins/Tools/kernel-clock.bin',PermanentUART:'../payloads/Bins/Tools/permanent-uart.bin',AppDumper:'../payloads/Bins/Dumper/app-dumper.bin',KernelDumper:'../payloads/Bins/Dumper/kernel-dumper.bin',VTXDumper:'../payloads/Bins/Dumper/ps4-dumper-vtx-900.bin',ModuleDumper:'../payloads/Bins/Dumper/module-dumper.bin',PSFreeFix:'../payloads/Bins/Tools/ps4-psfree-fix.bin',AppCacheInstall:'../payloads/Bins/Tools/appcache-install.bin'};
+if(requested==='BinLoader'){sessionStorage.setItem('binloader','1');window.payload_path=null}else{sessionStorage.removeItem('binloader');window.payload_path=payloads[requested]||payloads.GoldHEN}
+})();
+</script>
+<script type="module" src="./alert.mjs"></script>
+</body></html>

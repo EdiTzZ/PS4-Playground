@@ -5,75 +5,44 @@
 	<link rel="stylesheet" type="text/css" href="../css/metro-bootstrap.css">
 	</head>
 	<script>
-      var disableFeatures = false;
-      var ua = navigator.userAgent;
-      var playstationOrNot = ua.substring(ua.indexOf("5.0 (") + 5, ua.indexOf(") Apple") - 7);
+(function () {
+  var ua = navigator.userAgent;
+  var match = ua.match(/PlayStation(?:;\s*PlayStation)?(?: 4\/| 4 )(\d+\.\d+)/);
+  if (!match) {
+    document.write('<div class="alert alert-danger"><strong>No Playstation 4 detected!</strong></div>');
+    return;
+  }
 
-      if(playstationOrNot != "PlayStation")
-      {
-      alert("No PS4 detected!")
-        document.write('<div class="alert alert-danger"><strong>No Playstation 4 detected!</strong></div>');
-        window.stop();  
-if ($.browser.msie) {document.execCommand("Stop");};
-        disableFeatures = true;
-      }
+  var fw = match[1];
+  var legacy = {
+    "1.76":"../1.76/index.html",
+    "3.55":"../3.55/index.html",
+    "4.05":"../4.05/index.html",
+    "4.55":"../4.55/index.html",
+    "4.74":"../4.74/index.html",
+    "5.05":"../5.05/index.html",
+    "5.07":"../5.05/index.html",
+    "6.72":"../6.72/index.html"
+  };
 
-      else if(ua.substring(ua.indexOf("5.0 (") + 19, ua.indexOf(") Apple")) == "1.76")
-      {
-	  window.location.href = "https://ps4.editzz.com/1.76/index.html";
-if ($.browser.msie) {document.execCommand("Stop");}; 
-        disableFeatures = true;
-      }
-      else if(ua.substring(ua.indexOf("5.0 (") + 19, ua.indexOf(") Apple")) == "3.55")
-      {
-      window.location.href = "https://ps4.editzz.com/3.55/index.html";
-if ($.browser.msie) {document.execCommand("Stop");}; 
-        disableFeatures = true;
-      }
-      else if(ua.substring(ua.indexOf("5.0 (") + 19, ua.indexOf(") Apple")) == "4.05")
-      {
-      window.location.href = "https://ps4.editzz.com/4.05/index.html";
-if ($.browser.msie) {document.execCommand("Stop");}; 
-        disableFeatures = true;
-      }
-      else if(ua.substring(ua.indexOf("5.0 (") + 19, ua.indexOf(") Apple")) == "4.55")
-      {
-      window.location.href = "https://ps4.editzz.com/4.55/index.html";
-if ($.browser.msie) {document.execCommand("Stop");}; 
-        disableFeatures = true;
-      }
-      else if(ua.substring(ua.indexOf("5.0 (") + 19, ua.indexOf(") Apple")) == "4.74")
-      {
-      window.location.href = "https://ps4.editzz.com/4.74/index.html";
-if ($.browser.msie) {document.execCommand("Stop");}; 
-        disableFeatures = true;
-      }
-	  else if(ua.substring(ua.indexOf("5.0 (") + 19, ua.indexOf(") Apple")) == "5.05")
-      {
-      window.location.href = "https://ps4.editzz.com/5.05/index.html";
-if ($.browser.msie) {document.execCommand("Stop");}; 
-        disableFeatures = true;
-      }
-	  else if(ua.substring(ua.indexOf("5.0 (") + 19, ua.indexOf(") Apple")) == "5.07")
-      {
-      window.location.href = "https://ps4.editzz.com/5.05/index.html";
-if ($.browser.msie) {document.execCommand("Stop");}; 
-        disableFeatures = true;
-      }
-      else if(ua.substring(ua.indexOf("5.0 (") + 19, ua.indexOf(") Apple")) == "6.72")
-      {
-      window.location.href = "https://ps4.editzz.com/6.72/index.html";
-if ($.browser.msie) {document.execCommand("Stop");}; 
-        disableFeatures = true;
-      }
-	  else if(ua.substring(ua.indexOf("5.0 (") + 19, ua.indexOf(") Apple")) == "7.02")
-      {
-      window.location.href = "https://ps4.editzz.com/7.02/index.html";
-if ($.browser.msie) {document.execCommand("Stop");}; 
-        disableFeatures = true;
-      }
-      else
-      {
-      }
-    </script>
+  var psfree = [
+    "7.00","7.01","7.02","7.50","7.51","7.55",
+    "8.00","8.01","8.03","8.50","8.52",
+    "9.00","9.03","9.04","9.50","9.51","9.60"
+  ];
+
+  if (legacy[fw]) {
+    location.replace(legacy[fw]);
+    return;
+  }
+
+  if (psfree.indexOf(fw) !== -1) {
+    location.replace("../psfree/index.html");
+    return;
+  }
+
+  document.write('<div class="alert alert-danger"><strong>Unsupported PS4 firmware: ' + fw + '</strong></div>');
+})();
+</script>
+
 </html>
