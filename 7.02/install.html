@@ -3,6 +3,14 @@
 	<head></head>
     <pre id='status'>checking: <b>CACHE STATUS:</b> Checking offline cache...</pre>
     <script type="text/javascript">
+      function reloadPlayground() {
+        try {
+          window.parent.location.href = 'cache-reload.html';
+        } catch (err) {
+          window.location.href = 'cache-reload.html';
+        }
+      }
+
       var ua = navigator.userAgent;
       var playstationOrNot = ua.substring(ua.indexOf("5.0 (") + 5, ua.indexOf(") Apple") - 7);
       if(playstationOrNot == "PlayStation")
@@ -48,9 +56,7 @@ function logEvent(e) {
         message = "<b>CACHE STATUS:</b> Everything loaded! Reloading Playground...";
         changeButtonToInstalled();
         setStatus(message);
-        setTimeout(function() {
-          try { window.parent.location.reload(); } catch (err) { window.location.reload(); }
-        }, 750);
+        setTimeout(reloadPlayground, 750);
         break;
       case "checking":
         message = "<b>CACHE STATUS:</b> Checking for a new version...";
@@ -62,9 +68,7 @@ function logEvent(e) {
         message = "<b>CACHE STATUS:</b> New version ready. Reloading Playground...";
         window.parent.appCacheUpdateReady();
         setStatus(message);
-        setTimeout(function() {
-          try { window.parent.location.reload(); } catch (err) { window.location.reload(); }
-        }, 750);
+        setTimeout(reloadPlayground, 750);
         break;
       case "error":
         switch (window.applicationCache.status) {

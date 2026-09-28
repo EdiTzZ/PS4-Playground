@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# 20260928-selfhosted-psfree:v7
+# 20260928-selfhosted-psfree:v14
 
 app2usb/App2USB.js
 app2usb/index.html
@@ -28,6 +28,7 @@ history-blocker/History-Blocker.js
 history-blocker/index.html
 index.html
 install.html
+cache-reload.html
 linux/1GB/index.html
 linux/1GB/linux1.js
 linux/3GB/index.html
@@ -88,6 +89,7 @@ vr/vr.js
 ../index.html
 ../offline/index.html
 ../offline/install.html
+cache-reload.html
 ../psfree/launcher.html
 ../psfree/alert.mjs
 ../psfree/config.mjs
