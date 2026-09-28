@@ -50,4 +50,3 @@ if (requestedPayload === "BinLoader") {
   window.payload_path = selected || payloads.GoldHEN;
 }
 
-await import("./alert.mjs");

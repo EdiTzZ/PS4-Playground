@@ -37,6 +37,3 @@ addEventListener("error", (event) => {
   return true;
 });
 
-// we have to dynamically import the program if we want to catch its syntax
-// errors
-import("./psfree.mjs");
