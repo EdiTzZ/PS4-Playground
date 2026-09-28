@@ -1,28 +1,45 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>PS4 Playground</title>
-<link rel="shortcut icon" type="image/x-icon" href="../img/favicon.ico">
-<link rel="stylesheet" type="text/css" href="../css/metro-bootstrap.css">
 <style>
-html,body{background:#000;color:#fff;margin:0}
-body{font-family:Arial,sans-serif}
-#v9-loader{position:fixed;inset:0;z-index:99999;background:#000;padding:24px;box-sizing:border-box}
-#status{color:#0072ff;font-size:20px;margin-bottom:16px}
-#console{font-family:monospace;white-space:pre-wrap;font-size:14px;line-height:1.35;max-height:75vh;overflow:auto;margin:0;color:#fff;background:#000}
-/* Keep PSFree's exploit DOM in the document, but never show its frontend. */
-body > *:not(#v9-loader){visibility:hidden!important;pointer-events:none!important}
-#DebugConsole{display:none!important}
+html,body{margin:0;padding:0;background:#fff;color:#333;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;min-height:100%;}
+#playground-control{position:relative;inset:auto;display:block;z-index:10000;background:transparent;padding:0;margin:0;}
+#playground-start{display:inline-block;margin:0 6px;padding:10px 18px;font-size:18px;line-height:1.3333333;font-weight:400;text-align:center;white-space:nowrap;vertical-align:middle;touch-action:manipulation;cursor:pointer;user-select:none;border:1px solid transparent;border-radius:4px;color:#fff;background:#5bc0de;border-color:#46b8da;font-family:inherit;}
+#playground-start:hover,#playground-start:focus{color:#fff;background:#31b0d5;border-color:#269abc;text-decoration:none;}
+#playground-start:active{background:#31b0d5;border-color:#269abc;transform:none;}
+#playground-start:disabled{opacity:.65;cursor:not-allowed;}
+#playground-status{margin-top:12px;color:#777;font-size:14px;}
+#DebugConsole{display:none!important;}
+#psfree-hidden{visibility:hidden;position:absolute;left:-100000px;top:-100000px;width:1px;height:1px;overflow:hidden;pointer-events:none;}
+#playground-control.started{background:transparent;pointer-events:none;}
+#playground-control.started #playground-start{display:none;}
 </style>
 </head>
 <body>
-<div id="v9-loader">
-  <div id="status">Starting...</div>
-  <pre id="console"></pre>
+<nav class="navbar navbar-inverse" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header"><a class="navbar-brand" href="../7.02/index.html">PS4 PSFree Kernel Exploit</a></div>
+    <ul class="nav navbar-nav navbar-right"><li><a href="../7.02/index.html">PS4 Playground</a></li></ul>
+  </div>
+</nav>
+<div class="container">
+  <div class="jumbotron">
+    <h1>PS4 PSFree Kernel Exploit</h1>
+    <p class="lead">PSFree is ready. Press the button below to start the exploit.</p>
+    <hr>
+    <div id="playground-control">
+      <button id="playground-start" type="button">Start PSFree</button>
+      <div id="playground-status">Firmware will be detected automatically.</div>
+    </div>
+  </div>
+  <div class="footer"><p>PS4 Playground</p></div>
 </div>
-<!-- Floating Menu -->
+<div id="psfree-hidden">
+
+    <!-- Floating Menu -->
     <div class="floating-menu">
       <button onclick="showpayloads()" class="menu-btn" id="payloadsbtn">Payloads</button>
       <button class="menu-btn" id="generate-cache-btn">Force-Cache</button>
@@ -133,6 +150,14 @@ body > *:not(#v9-loader){visibility:hidden!important;pointer-events:none!importa
       </div>
     </div>
     
+    </div>
+<div id="DebugConsole">
+      <h3>Debug Console</h3>
+    
+      <div class="console" style="padding: 20px;"><pre id='console'></pre></div>
+    </div>
+    
+
     <!-- About Popup -->
     <div class="overlay" id="overlay-popup"></div>
     <div class="popup" id="about-popup">
@@ -218,61 +243,25 @@ body > *:not(#v9-loader){visibility:hidden!important;pointer-events:none!importa
     <script src='./js/index.js'></script>
   
 <script>
-(function () {
-  function getParam(name) {
-    var q = window.location.search.substring(1).split('&');
-    for (var i = 0; i < q.length; i++) {
-      var p = q[i].split('=');
-      if (decodeURIComponent(p[0] || '') === name) {
-        return decodeURIComponent((p.slice(1).join('=') || '').replace(/\+/g, ' '));
-      }
-    }
-    return null;
-  }
-
-  var requested = getParam('payload') || 'GoldHEN';
-  var payloads = {
-    GoldHEN: '../payloads/GoldHEN/GoldHEN.bin',
-    HEN: '../payloads/HEN/HEN.bin',
-    FTP: '../payloads/Bins/Tools/ftp.bin',
-    App2USB: '../payloads/Bins/Tools/app2usb.bin',
-    HistoryBlocker: '../payloads/Bins/Tools/history-blocker.bin',
-    BrowserUnlocker: '../payloads/Bins/Tools/enable-browser.bin',
-    BackupDB: '../payloads/Bins/Tools/backup.bin',
-    RestoreDB: '../payloads/Bins/Tools/restore.bin',
-    EnableUpdates: '../payloads/Bins/Tools/enable-updates.bin',
-    DisableUpdates: '../payloads/Bins/Tools/disable-updates.bin',
-    DisableASLR: '../payloads/Bins/Tools/disable-aslr.bin',
-    ExitIDU: '../payloads/Bins/Tools/exit-idu.bin',
-    RIFRenamer: '../payloads/Bins/Tools/rif-renamer.bin',
-    PUPDecrypt: '../payloads/Bins/Tools/pup-decrypt.bin',
-    PS4Debug: '../payloads/Bins/Tools/ps4debug.bin',
-    ToDex: '../payloads/Bins/Tools/ToDex.bin',
-    ToDev: '../payloads/Bins/Tools/ToDev.bin',
-    ToCex: '../payloads/Bins/Tools/ToCex.bin',
-    ToKratos: '../payloads/Bins/Tools/ToKratos.bin',
-    KernelClock: '../payloads/Bins/Tools/kernel-clock.bin',
-    PermanentUART: '../payloads/Bins/Tools/permanent-uart.bin',
-    AppDumper: '../payloads/Bins/Dumper/app-dumper.bin',
-    KernelDumper: '../payloads/Bins/Dumper/kernel-dumper.bin',
-    VTXDumper: '../payloads/Bins/Dumper/ps4-dumper-vtx-900.bin',
-    ModuleDumper: '../payloads/Bins/Dumper/module-dumper.bin',
-    PSFreeFix: '../payloads/Bins/Tools/ps4-psfree-fix.bin',
-    AppCacheInstall: '../payloads/Bins/Tools/appcache-install.bin'
+(function(){
+  const start=document.getElementById('playground-start');
+  const status=document.getElementById('playground-status');
+  const params=new URLSearchParams(location.search);
+  const payload=params.get('payload') || 'GoldHEN';
+  const payloadMap={
+    GoldHEN:'/payloads/GoldHEN/GoldHEN.bin', HEN:'/payloads/HEN/HEN.bin', BinLoader:'/payloads/Bins/Loader.bin', FTP:'/payloads/FTP/FTP.bin',
+    AppDumper:'/payloads/AppDumper/AppDumper.bin', HistoryBlocker:'/payloads/HistoryBlocker/HistoryBlocker.bin', App2USB:'/payloads/App2USB/App2USB.bin',
+    BrowserUnlocker:'/payloads/BrowserUnlocker/BrowserUnlocker.bin', BackupDB:'/payloads/BackupDB/BackupDB.bin', EnableUpdates:'/payloads/EnableUpdates/EnableUpdates.bin'
   };
-
-  if (requested === 'BinLoader') {
-    try { sessionStorage.setItem('binloader', '1'); } catch (e) {}
-    window.payload_path = null;
-  } else {
-    try { sessionStorage.removeItem('binloader'); } catch (e) {}
-    window.payload_path = payloads[requested] || payloads.GoldHEN;
-  }
-
-  var status = document.getElementById('status');
-  status.textContent = 'Starting ' + requested + '...';
+  window.payload_path=payloadMap[payload] || payloadMap.GoldHEN;
+  start.textContent='Start ' + payload;
+  start.addEventListener('click', async function(){
+    start.disabled=true; status.textContent='Starting PSFree…';
+    document.getElementById('playground-control').classList.add('started');
+    try { await import('./alert.mjs'); }
+    catch(e) { alert('PSFree start failed\n'+e+'\n'+(e&&e.stack||'')); start.disabled=false; document.getElementById('playground-control').classList.remove('started'); status.textContent='Start failed — press the button to try again.'; }
+  }, {once:true});
 })();
 </script>
-<script type="module" src="./alert.mjs"></script>
 </body>
 </html>
