@@ -271,22 +271,8 @@ body > *:not(#v9-loader){visibility:hidden!important;pointer-events:none!importa
 
   var status = document.getElementById('status');
   status.textContent = 'Starting ' + requested + '...';
-
-  // Start PSFree automatically: no visible Start button.
-  function start() {
-    import('./alert.mjs').catch(function (e) {
-      status.textContent = 'PSFree start failed';
-      var c = document.getElementById('console');
-      c.textContent += '\n' + e + '\n' + (e && e.stack ? e.stack : '');
-    });
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', start, {once:true});
-  } else {
-    setTimeout(start, 0);
-  }
 })();
 </script>
+<script type="module" src="./alert.mjs"></script>
 </body>
 </html>
