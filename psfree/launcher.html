@@ -9,36 +9,41 @@
 html,body{background:#000;color:#fff;height:100%;margin:0}
 body{font-family:Arial,sans-serif}
 #status{color:#0072ff;font-size:20px;text-align:center;padding:20px}
-#loader{display:none;align-items:center;justify-content:center;min-height:100vh}
-#jailbreak{display:none}
+#loader{display:flex;align-items:center;justify-content:center;min-height:100vh}
 </style>
 </head>
 <body>
 <div id="loader"><div id="status">Starting PS4 Playground...</div></div>
-<div id="jailbreak"></div>
-<input id="ckbaj" type="checkbox" style="display:none" checked>
+<input id="ckbaj" type="checkbox" style="display:none">
 
 <script>
-/*
- * PS4-compatible bootstrap.
- * Do not use dynamic import() here: the PS4 browser does not support it.
- * The classic script runs first and prepares the payload path/session state.
- */
 (function () {
   var params = new URLSearchParams(window.location.search);
   var requested = params.get("payload") || "GoldHEN";
 
+  /*
+   * These paths are relative to /psfree/launcher.html.
+   * PSFree's lapse.mjs will execute the kernel exploit first and only then
+   * call runPayload(window.payload_path).
+   */
   var payloads = {
     GoldHEN: "../payloads/GoldHEN/GoldHEN.bin",
     HEN: "../payloads/HEN/HEN.bin",
+
     FTP: "../payloads/Bins/Tools/ftp.bin",
     App2USB: "../payloads/Bins/Tools/app2usb.bin",
     HistoryBlocker: "../payloads/Bins/Tools/history-blocker.bin",
     BrowserUnlocker: "../payloads/Bins/Tools/enable-browser.bin",
+
     BackupDB: "../payloads/Bins/Tools/backup.bin",
     RestoreDB: "../payloads/Bins/Tools/restore.bin",
     EnableUpdates: "../payloads/Bins/Tools/enable-updates.bin",
     DisableUpdates: "../payloads/Bins/Tools/disable-updates.bin",
+    DisableASLR: "../payloads/Bins/Tools/disable-aslr.bin",
+    ExitIDU: "../payloads/Bins/Tools/exit-idu.bin",
+    RIFRenamer: "../payloads/Bins/Tools/rif-renamer.bin",
+    PUPDecrypt: "../payloads/Bins/Tools/pup-decrypt.bin",
+
     PS4Debug: "../payloads/Bins/Tools/ps4debug.bin",
     ToDex: "../payloads/Bins/Tools/ToDex.bin",
     ToDev: "../payloads/Bins/Tools/ToDev.bin",
@@ -46,40 +51,51 @@ body{font-family:Arial,sans-serif}
     ToKratos: "../payloads/Bins/Tools/ToKratos.bin",
     KernelClock: "../payloads/Bins/Tools/kernel-clock.bin",
     PermanentUART: "../payloads/Bins/Tools/permanent-uart.bin",
+
     AppDumper: "../payloads/Bins/Dumper/app-dumper.bin",
     KernelDumper: "../payloads/Bins/Dumper/kernel-dumper.bin",
     VTXDumper: "../payloads/Bins/Dumper/ps4-dumper-vtx-900.bin",
     ModuleDumper: "../payloads/Bins/Dumper/module-dumper.bin",
+
     PSFreeFix: "../payloads/Bins/Tools/ps4-psfree-fix.bin",
     AppCacheInstall: "../payloads/Bins/Tools/appcache-install.bin"
   };
 
-  window.payload_path = payloads[requested] || payloads.GoldHEN;
-
   if (requested === "BinLoader") {
     sessionStorage.setItem("binloader", "1");
+    window.payload_path = null;
   } else {
     sessionStorage.removeItem("binloader");
+    window.payload_path = payloads[requested] || payloads.GoldHEN;
   }
 
-  document.getElementById("loader").style.display = "flex";
-  document.getElementById("status").textContent = "Starting " + requested + "...";
+  document.getElementById("status").textContent =
+    "Starting " + requested + "...";
+
+  function showError(prefix, error) {
+    var message = error && error.stack ? error.stack : String(error);
+    document.getElementById("status").textContent = prefix + message;
+    try { alert(prefix + message); } catch (_) {}
+  }
 
   window.addEventListener("error", function (event) {
-    var e = event.error || event.message || "unknown error";
-    document.getElementById("status").textContent = "PSFree error: " + e;
-    alert("PSFree error: " + e);
+    showError("PSFree error: ", event.error || event.message || "unknown error");
   });
 
   window.addEventListener("unhandledrejection", function (event) {
-    var e = event.reason || "unknown error";
-    document.getElementById("status").textContent = "PSFree error: " + e;
-    alert("PSFree error: " + e);
+    showError("PSFree error: ", event.reason || "unknown error");
+  });
+
+  /*
+   * IMPORTANT:
+   * Do NOT load psfree.mjs with <script type="module"> here.
+   * The upstream PS4-compatible chain uses a classic script plus dynamic
+   * import(), and alert.mjs then imports psfree.mjs.
+   */
+  import("../psfree/alert.mjs").catch(function (error) {
+    showError("PSFree bootstrap error: ", error);
   });
 })();
 </script>
-
-<!-- Static module loading is supported by the PS4 browser; dynamic import() is not. -->
-<script type="module" src="./psfree.mjs"></script>
 </body>
 </html>
