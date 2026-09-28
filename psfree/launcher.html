@@ -5,41 +5,119 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>PS4 Playground</title>
 <style>
-html,body{margin:0;padding:0;background:#fff;color:#333;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;min-height:100%;}
-#playground-control{position:relative;inset:auto;display:block;z-index:10000;background:transparent;padding:0;margin:0;}
-#playground-start{display:inline-block;margin:0 6px;padding:10px 18px;font-size:18px;line-height:1.3333333;font-weight:400;text-align:center;white-space:nowrap;vertical-align:middle;touch-action:manipulation;cursor:pointer;user-select:none;border:1px solid transparent;border-radius:4px;color:#fff;background:#5bc0de;border-color:#46b8da;font-family:inherit;}
-#playground-start:hover,#playground-start:focus{color:#fff;background:#31b0d5;border-color:#269abc;text-decoration:none;}
-#playground-start:active{background:#31b0d5;border-color:#269abc;transform:none;}
-#playground-start:disabled{opacity:.65;cursor:not-allowed;}
-#playground-status{margin-top:12px;color:#777;font-size:14px;}
+html,body{margin:0;background:#000;color:#fff;min-height:100%;font-family:sans-serif}
+/* Keep the original PSFree DOM present, but do not show its frontend. */
+#playground-control{visibility:visible;position:fixed;inset:0;display:flex;align-items:center;justify-content:center;z-index:10000;background:#000}
+#playground-start{font-size:28px;padding:18px 46px;border:2px solid #fff;border-radius:8px;background:#000;color:#fff;cursor:pointer}
+#playground-start:active{transform:scale(.98)}
+#DebugConsole{visibility:visible;position:fixed;left:0;right:0;bottom:0;height:32vh;z-index:10001;background:#000;color:#fff;display:block!important;pointer-events:none}
+#DebugConsole h3{margin:8px 20px;font-size:18px}
+#DebugConsole .console{padding:0 20px!important;height:calc(100% - 42px);overflow:auto}
+#console{display:block!important;color:#fff!important;background:#000!important;white-space:pre-wrap!important;font:14px monospace!important}
+#playground-control.started{background:transparent;pointer-events:none;align-items:flex-start;justify-content:center;padding-top:18px}
+#playground-control.started #playground-start{display:none}
+</style>
+
+<link rel="stylesheet" type="text/css" href="../css/metro-bootstrap.css">
+<style>
+#v9-frontend{position:relative;z-index:20000;color:#333;background:#fff;min-height:100vh;overflow:auto;}
+#v9-frontend body{color:#333;background:#fff;}
+#v9-frontend .navbar{margin-bottom:20px;}
+#v9-start{margin:6px 4px;font-size:18px;padding:10px 22px;}
+#psfree-runtime-dom{visibility:hidden;pointer-events:none;position:absolute;left:0;top:0;width:1px;height:1px;overflow:visible;}
 #DebugConsole{display:none!important;}
-#psfree-hidden{visibility:hidden;position:absolute;left:-100000px;top:-100000px;width:1px;height:1px;overflow:hidden;pointer-events:none;}
-#playground-control.started{background:transparent;pointer-events:none;}
-#playground-control.started #playground-start{display:none;}
 </style>
 </head>
 <body>
-<nav class="navbar navbar-inverse" role="navigation">
-  <div class="container-fluid">
-    <div class="navbar-header"><a class="navbar-brand" href="../7.02/index.html">PS4 PSFree Kernel Exploit</a></div>
-    <ul class="nav navbar-nav navbar-right"><li><a href="../7.02/index.html">PS4 Playground</a></li></ul>
-  </div>
-</nav>
-<div class="container">
-  <div class="jumbotron">
-    <h1>PS4 PSFree Kernel Exploit</h1>
-    <p class="lead">PSFree is ready. Press the button below to start the exploit.</p>
-    <hr>
-    <div id="playground-control">
-      <button id="playground-start" type="button">Start PSFree</button>
-      <div id="playground-status">Firmware will be detected automatically.</div>
-    </div>
-  </div>
-  <div class="footer"><p>PS4 Playground</p></div>
-</div>
-<div id="psfree-hidden">
 
-    <!-- Floating Menu -->
+<div id="v9-frontend">
+
+	<nav class="navbar navbar-inverse" role="navigation">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">PS4 PSFree Kernel Exploit</a>
+		</div>
+
+		<div class="collapse navbar-collapse navbar-ex1-collapse">
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="#">Welcome</a></li>
+		<li><a href="#">Mira</a></li>
+		<li><a href="../psfree/launcher.html?payload=BinLoader">BinLoader</a></li>
+		<li><a href="../psfree/launcher.html?payload=HEN">HEN</a></li>
+		<li><a href="#">Linux</a></li>
+		<li><a href="../psfree/launcher.html?payload=FTP">FTP</a></li>
+		<li><a href="../psfree/launcher.html?payload=AppDumper">Dumper</a></li>
+		<li><a href="../psfree/launcher.html?payload=HistoryBlocker">History Blocker</a></li>
+		<li><a href="../psfree/launcher.html?payload=App2USB">App2USB</a></li>
+		<li><a href="../psfree/launcher.html?payload=BrowserUnlocker">Enable Browser</a></li>
+		<li><a href="../psfree/launcher.html?payload=BackupDB">DB Backup & Restore</a></li>
+		<li><a href="../psfree/launcher.html?payload=EnableUpdates">Updates</a></li>
+		<li><a href="#">VR</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#">Game Mods & PS4 Tools</a></li>
+			    <li><a href="../index.html">PS4 Playground Index</a></li>
+				<li><a href="#">Compatible Firmware: 7.00 - 9.60</a></li>
+			</ul>
+		</div>
+	</nav>
+    <div class="container">
+		<div class="jumbotron">
+      <h1>About PS4 PSFree Kernel Exploit</h1>
+      <p class="lead">
+	  
+		<b>## Summary</b><br>
+		Here you will find a self-hosted PSFree implementation for PlayStation 4 firmwares 7.00 - 9.60. It will allow you to run arbitrary code as kernel, to allow jailbreaking and kernel-level modifications to the system.<br>
+		This bug was originally discovered by <b>Fire30</b>, and subsequently found by <b>Andy Nguyen</b>.
+		<br><br>
+		<b>## Patches Included</b><br>
+		- Allow RWX (read-write-execute) memory mapping (mmap / mprotect)<br>
+		- Syscall instruction allowed anywhere<br>
+		- Dynamic Resolving (<code>sys_dynlib_dlsym</code>) allowed from any process<br>
+		- Custom system call #11 (<code>kexec()</code>) to execute arbitrary code in kernel mode<br>
+		- Allow unprivileged users to call <code>setuid(0)</code> successfully. Works as a status check, doubles as a privilege escalation<br>
+		- (sys_dynlib_load_prx) patch
+		<br><br>
+		<b>## Notes</b><br>
+		- The page will crash on successful kernel exploitation, this is normal<br>
+		- There are a few races involved with this exploit, losing one of them and attempting the exploit again might not immediately crash the system but stability will take a hit
+		<br><br>
+		Don't miss the <a href="#"><b>Game Mods & PS4 Tools</b></a> section (top right corner)!
+		<br><br>
+		<font color="red"><b>I'm not responsible for any kind of damage on your PS4! Use it at your own risk!</b></font>
+		<br><br>
+		<b>## Contributors</b><br>
+		Massive credits to the following:
+		<br><br>
+		<a href="https://twitter.com/theflow0" rel="nofollow">TheFlow0</a><br>
+		<a href="https://github.com/Fire30/bad_hoist" rel="nofollow">Fire30</a><br>
+		<a href="https://github.com/ChendoChap/ps4-ipv6-uaf" rel="nofollow">ChendoChap</a><br>
+		<a href="https://github.com/synacktiv/PS4-webkit-exploit-6.XX" rel="nofollow">Synacktiv</a><br>
+		<a href="https://github.com/sleirsgoevy/ps4jb">sleirsgoevy</a><br>
+		<a href="https://twitter.com/_AlAzif">Al Azif</a><br>
+		All payload creators<br>
+		Anonymous
+      </p>
+      <hr />
+	  <center><button type="button" class="btn btn-info btn-lg" id="v9-start">Start PSFree</button></center>
+    </div>
+
+	  <hr>
+
+    <div class="footer">
+      <p>Copyright &copy; PS4 Playground <script>document.write('' + Date().substring(11, 15) + "");</script></p>
+    </div>
+
+    </div>
+  
+</div>
+
+<div id="psfree-runtime-dom"><!-- Floating Menu -->
     <div class="floating-menu">
       <button onclick="showpayloads()" class="menu-btn" id="payloadsbtn">Payloads</button>
       <button class="menu-btn" id="generate-cache-btn">Force-Cache</button>
@@ -150,8 +228,7 @@ html,body{margin:0;padding:0;background:#fff;color:#333;font-family:"Helvetica N
       </div>
     </div>
     
-    </div>
-<div id="DebugConsole">
+    <div id="DebugConsole">
       <h3>Debug Console</h3>
     
       <div class="console" style="padding: 20px;"><pre id='console'></pre></div>
@@ -242,24 +319,36 @@ html,body{margin:0;padding:0;background:#fff;color:#333;font-family:"Helvetica N
     </div>
     <script src='./js/index.js'></script>
   
+</div>
+
+               <input type="checkbox" id="ckbdc" checked />
+                <span>Enable Debug Console</span>
+              </label>
+          </div>
+        </div>
+      </div>
+      
+      <div class="button-container">
+        <button data-func="load_PSFreeFix" class="install-psfrf" id="install-psfrf" style="display: none;">Install PSFree-Fix</button>
+      </div>
+      <button onclick="closesettings()" class="close-btn" id="close-settings"></button>
+    </div>
+    <script src='./js/index.js'></script>
+  
 <script>
 (function(){
-  const start=document.getElementById('playground-start');
-  const status=document.getElementById('playground-status');
-  const params=new URLSearchParams(location.search);
-  const payload=params.get('payload') || 'GoldHEN';
-  const payloadMap={
-    GoldHEN:'/payloads/GoldHEN/GoldHEN.bin', HEN:'/payloads/HEN/HEN.bin', BinLoader:'/payloads/Bins/Loader.bin', FTP:'/payloads/FTP/FTP.bin',
-    AppDumper:'/payloads/AppDumper/AppDumper.bin', HistoryBlocker:'/payloads/HistoryBlocker/HistoryBlocker.bin', App2USB:'/payloads/App2USB/App2USB.bin',
-    BrowserUnlocker:'/payloads/BrowserUnlocker/BrowserUnlocker.bin', BackupDB:'/payloads/BackupDB/BackupDB.bin', EnableUpdates:'/payloads/EnableUpdates/EnableUpdates.bin'
-  };
-  window.payload_path=payloadMap[payload] || payloadMap.GoldHEN;
-  start.textContent='Start ' + payload;
+  const start=document.getElementById('v9-start');
   start.addEventListener('click', async function(){
-    start.disabled=true; status.textContent='Starting PSFree…';
-    document.getElementById('playground-control').classList.add('started');
-    try { await import('./alert.mjs'); }
-    catch(e) { alert('PSFree start failed\n'+e+'\n'+(e&&e.stack||'')); start.disabled=false; document.getElementById('playground-control').classList.remove('started'); status.textContent='Start failed — press the button to try again.'; }
+    start.disabled=true;
+    start.textContent='Starting…';
+    window.payload_path='/payloads/GoldHEN/GoldHEN.bin';
+    try {
+      await import('./alert.mjs');
+    } catch(e) {
+      alert('PSFree start failed\n'+e+'\n'+(e&&e.stack||''));
+      start.disabled=false;
+      start.textContent='Start PSFree';
+    }
   }, {once:true});
 })();
 </script>

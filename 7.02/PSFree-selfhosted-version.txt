@@ -1,1 +1,0 @@
-v16 - 7.02 AppCache disabled; self-hosted PSFree launcher retained
