@@ -45,8 +45,12 @@ function logEvent(e) {
         message = "<b>CACHE STATUS:</b> Offline mode has been uninstalled.";
         break;
       case "cached":
-        message = "<b>CACHE STATUS:</b> Everything loaded! Now you can go offline!";
+        message = "<b>CACHE STATUS:</b> Everything loaded! Reloading Playground...";
         changeButtonToInstalled();
+        setStatus(message);
+        setTimeout(function() {
+          try { window.parent.location.reload(); } catch (err) { window.location.reload(); }
+        }, 750);
         break;
       case "checking":
         message = "<b>CACHE STATUS:</b> Checking for a new version...";
@@ -55,8 +59,12 @@ function logEvent(e) {
         message = "<b>CACHE STATUS:</b> Downloading...";
         break;
       case "updateready":
-        message = "<b>CACHE STATUS:</b> A new version is ready. Click to <a href='javascript:window.location.reload();' onclick='return confirm(\"This will reload the Playground in cache. Continue?\");'>upgrade</a>.";
+        message = "<b>CACHE STATUS:</b> New version ready. Reloading Playground...";
         window.parent.appCacheUpdateReady();
+        setStatus(message);
+        setTimeout(function() {
+          try { window.parent.location.reload(); } catch (err) { window.location.reload(); }
+        }, 750);
         break;
       case "error":
         switch (window.applicationCache.status) {
