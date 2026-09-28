@@ -2005,6 +2005,6 @@ function LoadPayload(){
       document.getElementById('jailbreak').style.display = 'flex';
       document.getElementById('loader').style.display = 'none';
     }
-    window.location.reload();
+    window.location.href = '/7.02/';
   }, 5000);
 }
