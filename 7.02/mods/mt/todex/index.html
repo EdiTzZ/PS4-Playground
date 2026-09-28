@@ -61,5 +61,17 @@ window.postExploit = function()
 <select id="select1">
 <option value="value1">Value1</option>
 </select>
+
+<!-- PSFree local payload bridge -->
+<script>
+window.addEventListener("load", function () {
+  var target = "../../../../psfree/launcher.html?payload=ToDex";
+  var link = document.createElement("a");
+  link.href = target;
+  link.textContent = "Start local PSFree payload";
+  link.style.cssText = "display:inline-block;margin:20px;padding:12px 20px;background:#0072ff;color:#fff;text-decoration:none;border-radius:4px";
+  document.body.appendChild(link);
+});
+</script>
 </body>
 </html>

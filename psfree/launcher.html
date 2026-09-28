@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>PS4 Playground</title>
+<link rel="shortcut icon" type="image/x-icon" href="../img/favicon.ico">
+<link rel="stylesheet" type="text/css" href="../css/metro-bootstrap.css">
+<style>
+html,body{background:#000;color:#fff;height:100%;margin:0}
+body{display:flex;align-items:center;justify-content:center}
+#status{color:#0072ff;font:20px Arial;text-align:center;padding:20px}
+</style>
+</head>
+<body>
+<div id="status">Starting PS4 Playground...</div>
+<script type="module">
+const p = new URLSearchParams(location.search).get("payload") || "GoldHEN";
+const status = document.getElementById("status");
+status.textContent = "Starting " + p + "...";
+
+if (location.protocol === "file:") {
+  status.textContent = "PSFree requires HTTP/HTTPS. Please open this site through a web server.";
+} else {
+  import("./loader.mjs?payload=" + encodeURIComponent(p)).catch(e => {
+    status.textContent = "PSFree error: " + e;
+    console.error("PSFree loader error:", e);
+  });
+}
+</script>
+</body>
+</html>
