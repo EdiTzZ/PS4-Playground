@@ -353,8 +353,24 @@ html,body{margin:0;background:#f4f7fb;color:#172033;min-height:100%;font-family:
   start.addEventListener('click', async function(){
     start.disabled=true;
     document.getElementById('playground-control').classList.add('started');
-    // Keep the payload URL independent from the launcher directory.
-    window.payload_path='/payloads/GoldHEN/GoldHEN.bin';
+    // Use the payload selected on /7.02/ while keeping the old GoldHEN default.
+    var params = new URLSearchParams(window.location.search);
+    var selectedPayload = params.get('payload');
+    if (selectedPayload) {
+      try { selectedPayload = decodeURIComponent(selectedPayload); } catch(e) {}
+      selectedPayload = selectedPayload.replace(/^\/+/, '');
+      if (selectedPayload === 'GoldHEN') {
+        window.payload_path='./payloads/GoldHEN/GoldHEN.bin';
+      } else if (selectedPayload === 'HEN') {
+        window.payload_path='./payloads/HEN/HEN.bin';
+      } else if (selectedPayload.indexOf('payloads/') === 0) {
+        window.payload_path='./' + selectedPayload;
+      } else {
+        window.payload_path='./payloads/GoldHEN/GoldHEN.bin';
+      }
+    } else {
+      window.payload_path='./payloads/GoldHEN/GoldHEN.bin';
+    }
     try {
       await import('./alert.mjs');
     } catch(e) {
