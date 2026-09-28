@@ -836,15 +836,6 @@ async function main() {
   await make_arw(rdr, view2, pop);
 
   clear_log();
-
-  // PS4 WebKit does not support dynamic import(). Load the next PSFree
-  // stage as a normal module script instead.
-  const lapse_script = document.createElement("script");
-  lapse_script.type = "module";
-  lapse_script.src = "lapse.mjs";
-  lapse_script.onerror = () => {
-    throw new Error("Failed to load PSFree lapse.mjs");
-  };
-  document.head.appendChild(lapse_script);
+  import("./lapse.mjs");
 }
 main();

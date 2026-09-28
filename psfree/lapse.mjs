@@ -1923,10 +1923,9 @@ function runBinLoader() {
 }
 
 function runPayload(path) {
-  const payload_url = new URL(path, document.baseURI).href;
-  log(`loading ${payload_url}`);
+  log(`loading ${path}`);
   const xhr = new XMLHttpRequest();
-  xhr.open("GET", payload_url, true); 
+  xhr.open("GET", path, true); 
   xhr.responseType = "arraybuffer";
   xhr.onload = function () {
     if (xhr.status === 200) {
@@ -1976,10 +1975,7 @@ kexploit().then((success) => {
 function LoadPayload(){
   log("The payload is going to be loaded now. Please wait...")
   document.getElementById('loader').style.display = 'flex';
-  const is_main_hen = (window.payload_path === "../payloads/GoldHEN/GoldHEN.bin" ||
-                       window.payload_path === "../payloads/HEN/HEN.bin" ||
-                       /(?:^|\/)payloads\/(?:GoldHEN|HEN)\//.test(window.payload_path || ""));
-  if (localStorage.getItem('jbsuccess') && is_main_hen) {
+  if (localStorage.getItem('jbsuccess') && (window.payload_path == "./payloads/GoldHEN/GoldHEN.bin" || window.payload_path == "./payloads/HEN/HEN.bin")) {
     log("Already jailbroken !");
     if(document.getElementById('ckbaj').checked){
       const Confirmation = confirm("It seems you are already jailbroken.\nDo you want to run the payload again?");

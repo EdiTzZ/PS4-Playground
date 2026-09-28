@@ -81,10 +81,4 @@ function get_target_from_ua(useragent) {
 }
 
 export let target = null;
-
-// When testing from a normal desktop browser, there is no PS4 user-agent.
-// Keep the self-hosted playground usable for local HTTP testing by defaulting
-// to PS4 firmware 7.02. On a real PS4, the firmware is still detected from
-// the native PlayStation user-agent.
-const detected_target = get_target_from_ua(navigator.userAgent);
-set_target(detected_target ?? 0x00702);
+set_target(get_target_from_ua(navigator.userAgent));

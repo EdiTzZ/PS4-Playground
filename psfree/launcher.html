@@ -15,7 +15,7 @@ body{font-family:Arial,sans-serif}
 </head>
 <body>
 <div id="loader">
-  <div id="status">Starting PS4 Playground...</div>
+  <div id="status">Starting...</div>
   <pre id="console"></pre>
 </div>
 <input id="ckbaj" type="checkbox" style="display:none">
@@ -25,8 +25,6 @@ body{font-family:Arial,sans-serif}
   var params = new URLSearchParams(window.location.search);
   var requested = params.get("payload") || "GoldHEN";
 
-  // lapse.mjs expects payload paths relative to the original PSFree page
-  // and uses the same convention as the upstream PSFree launcher.
   var payloads = {
     GoldHEN: "../payloads/GoldHEN/GoldHEN.bin",
     HEN: "../payloads/HEN/HEN.bin",
@@ -70,11 +68,8 @@ body{font-family:Arial,sans-serif}
 })();
 </script>
 
-<!-- The PS4 browser supports ES modules; load the chain as a module.
-     This also avoids dynamic import() in the bootstrap page. -->
-<script type="module">
-  import "./psfree.mjs";
-</script>
+<!-- This is the original PSFree bootstrap: alert.mjs installs error
+     handlers and then starts psfree.mjs. -->
 <script type="module" src="./alert.mjs"></script>
 </body>
 </html>
