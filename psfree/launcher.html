@@ -5,119 +5,121 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>PS4 Playground</title>
 <style>
-html,body{margin:0;background:#000;color:#fff;min-height:100%;font-family:sans-serif}
-/* Keep the original PSFree DOM present, but do not show its frontend. */
-#playground-control{visibility:visible;position:fixed;inset:0;display:flex;align-items:center;justify-content:center;z-index:10000;background:#000}
-#playground-start{font-size:28px;padding:18px 46px;border:2px solid #fff;border-radius:8px;background:#000;color:#fff;cursor:pointer}
-#playground-start:active{transform:scale(.98)}
-#DebugConsole{visibility:visible;position:fixed;left:0;right:0;bottom:0;height:32vh;z-index:10001;background:#000;color:#fff;display:block!important;pointer-events:none}
-#DebugConsole h3{margin:8px 20px;font-size:18px}
-#DebugConsole .console{padding:0 20px!important;height:calc(100% - 42px);overflow:auto}
-#console{display:block!important;color:#fff!important;background:#000!important;white-space:pre-wrap!important;font:14px monospace!important}
-#playground-control.started{background:transparent;pointer-events:none;align-items:flex-start;justify-content:center;padding-top:18px}
+html,body{margin:0;background:#f4f7fb;color:#172033;min-height:100%;font-family:Arial,Helvetica,sans-serif}
+/* Keep the original PSFree DOM present, but change only the appearance of the launcher. */
+#playground-control{
+  visibility:visible;
+  position:fixed;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:10000;
+  background:
+    radial-gradient(circle at 50% 35%,rgba(45,125,255,.10),transparent 38%),
+    linear-gradient(180deg,#ffffff 0%,#f4f7fb 100%);
+}
+#playground-control::before{
+  content:"PS4 Playground";
+  position:absolute;
+  top:16%;
+  left:0;
+  right:0;
+  text-align:center;
+  color:#202a3a;
+  font-size:34px;
+  font-weight:700;
+  letter-spacing:-.7px;
+}
+#playground-control::after{
+  content:"PSFree  •  Firmware 7.02";
+  position:absolute;
+  top:calc(16% + 50px);
+  left:0;
+  right:0;
+  text-align:center;
+  color:#7b8798;
+  font-size:15px;
+  letter-spacing:.2px;
+}
+#playground-start{
+  position:relative;
+  z-index:1;
+  min-width:230px;
+  padding:14px 34px;
+  border:1px solid #1689e8;
+  border-radius:6px;
+  background:linear-gradient(180deg,#25a7f3 0%,#1689e8 100%);
+  box-shadow:0 4px 12px rgba(22,137,232,.24),inset 0 1px 0 rgba(255,255,255,.22);
+  color:#fff;
+  font-size:20px;
+  font-weight:600;
+  letter-spacing:.1px;
+  cursor:pointer;
+  transition:transform .12s ease,box-shadow .12s ease,filter .12s ease;
+}
+#playground-start:hover{
+  filter:brightness(1.04);
+  box-shadow:0 5px 15px rgba(22,137,232,.30),inset 0 1px 0 rgba(255,255,255,.24);
+}
+#playground-start:active{
+  transform:translateY(1px);
+  box-shadow:0 2px 7px rgba(22,137,232,.22),inset 0 2px 3px rgba(0,0,0,.10);
+}
+#playground-start:disabled{opacity:.65;cursor:default}
+#DebugConsole{
+  visibility:visible;
+  position:fixed;
+  left:14px;
+  right:14px;
+  bottom:14px;
+  height:27vh;
+  z-index:10001;
+  background:rgba(17,24,39,.96);
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:8px;
+  box-shadow:0 10px 30px rgba(15,23,42,.20);
+  color:#e5edf8;
+  display:block!important;
+  pointer-events:none;
+  overflow:hidden;
+}
+#DebugConsole h3{
+  margin:0;
+  padding:10px 16px;
+  border-bottom:1px solid rgba(255,255,255,.08);
+  font-size:14px;
+  font-weight:600;
+  color:#fff;
+}
+#DebugConsole .console{
+  padding:10px 16px!important;
+  height:calc(100% - 44px);
+  overflow:auto;
+}
+#console{
+  display:block!important;
+  color:#dbeafe!important;
+  background:transparent!important;
+  white-space:pre-wrap!important;
+  font:13px/1.5 monospace!important;
+}
+#playground-control.started{
+  background:transparent;
+  pointer-events:none;
+  align-items:flex-start;
+  justify-content:center;
+  padding-top:18px;
+}
+#playground-control.started::before,
+#playground-control.started::after{display:none}
 #playground-control.started #playground-start{display:none}
-</style>
-
-<link rel="stylesheet" type="text/css" href="../css/metro-bootstrap.css">
-<style>
-#v9-frontend{position:relative;z-index:20000;color:#333;background:#fff;min-height:100vh;overflow:auto;}
-#v9-frontend body{color:#333;background:#fff;}
-#v9-frontend .navbar{margin-bottom:20px;}
-#v9-start{margin:6px 4px;font-size:18px;padding:10px 22px;}
-#psfree-runtime-dom{visibility:hidden;pointer-events:none;position:absolute;left:0;top:0;width:1px;height:1px;overflow:visible;}
-#DebugConsole{display:none!important;}
 </style>
 </head>
 <body>
+<div id="playground-control"><button id="playground-start">Start</button></div>
 
-<div id="v9-frontend">
-
-	<nav class="navbar navbar-inverse" role="navigation">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="#">PS4 PSFree Kernel Exploit</a>
-		</div>
-
-		<div class="collapse navbar-collapse navbar-ex1-collapse">
-			<ul class="nav navbar-nav">
-				<li class="active"><a href="#">Welcome</a></li>
-		<li><a href="#">Mira</a></li>
-		<li><a href="../psfree/launcher.html?payload=BinLoader">BinLoader</a></li>
-		<li><a href="../psfree/launcher.html?payload=HEN">HEN</a></li>
-		<li><a href="#">Linux</a></li>
-		<li><a href="../psfree/launcher.html?payload=FTP">FTP</a></li>
-		<li><a href="../psfree/launcher.html?payload=AppDumper">Dumper</a></li>
-		<li><a href="../psfree/launcher.html?payload=HistoryBlocker">History Blocker</a></li>
-		<li><a href="../psfree/launcher.html?payload=App2USB">App2USB</a></li>
-		<li><a href="../psfree/launcher.html?payload=BrowserUnlocker">Enable Browser</a></li>
-		<li><a href="../psfree/launcher.html?payload=BackupDB">DB Backup & Restore</a></li>
-		<li><a href="../psfree/launcher.html?payload=EnableUpdates">Updates</a></li>
-		<li><a href="#">VR</a></li>
-			</ul>
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#">Game Mods & PS4 Tools</a></li>
-			    <li><a href="../index.html">PS4 Playground Index</a></li>
-				<li><a href="#">Compatible Firmware: 7.00 - 9.60</a></li>
-			</ul>
-		</div>
-	</nav>
-    <div class="container">
-		<div class="jumbotron">
-      <h1>About PS4 PSFree Kernel Exploit</h1>
-      <p class="lead">
-	  
-		<b>## Summary</b><br>
-		Here you will find a self-hosted PSFree implementation for PlayStation 4 firmwares 7.00 - 9.60. It will allow you to run arbitrary code as kernel, to allow jailbreaking and kernel-level modifications to the system.<br>
-		This bug was originally discovered by <b>Fire30</b>, and subsequently found by <b>Andy Nguyen</b>.
-		<br><br>
-		<b>## Patches Included</b><br>
-		- Allow RWX (read-write-execute) memory mapping (mmap / mprotect)<br>
-		- Syscall instruction allowed anywhere<br>
-		- Dynamic Resolving (<code>sys_dynlib_dlsym</code>) allowed from any process<br>
-		- Custom system call #11 (<code>kexec()</code>) to execute arbitrary code in kernel mode<br>
-		- Allow unprivileged users to call <code>setuid(0)</code> successfully. Works as a status check, doubles as a privilege escalation<br>
-		- (sys_dynlib_load_prx) patch
-		<br><br>
-		<b>## Notes</b><br>
-		- The page will crash on successful kernel exploitation, this is normal<br>
-		- There are a few races involved with this exploit, losing one of them and attempting the exploit again might not immediately crash the system but stability will take a hit
-		<br><br>
-		Don't miss the <a href="#"><b>Game Mods & PS4 Tools</b></a> section (top right corner)!
-		<br><br>
-		<font color="red"><b>I'm not responsible for any kind of damage on your PS4! Use it at your own risk!</b></font>
-		<br><br>
-		<b>## Contributors</b><br>
-		Massive credits to the following:
-		<br><br>
-		<a href="https://twitter.com/theflow0" rel="nofollow">TheFlow0</a><br>
-		<a href="https://github.com/Fire30/bad_hoist" rel="nofollow">Fire30</a><br>
-		<a href="https://github.com/ChendoChap/ps4-ipv6-uaf" rel="nofollow">ChendoChap</a><br>
-		<a href="https://github.com/synacktiv/PS4-webkit-exploit-6.XX" rel="nofollow">Synacktiv</a><br>
-		<a href="https://github.com/sleirsgoevy/ps4jb">sleirsgoevy</a><br>
-		<a href="https://twitter.com/_AlAzif">Al Azif</a><br>
-		All payload creators<br>
-		Anonymous
-      </p>
-      <hr />
-	  <center><button type="button" class="btn btn-info btn-lg" id="v9-start">Start PSFree</button></center>
-    </div>
-
-	  <hr>
-
-    <div class="footer">
-      <p>Copyright &copy; PS4 Playground <script>document.write('' + Date().substring(11, 15) + "");</script></p>
-    </div>
-
-    </div>
-  
-</div>
-
-<div id="psfree-runtime-dom"><!-- Floating Menu -->
+    <!-- Floating Menu -->
     <div class="floating-menu">
       <button onclick="showpayloads()" class="menu-btn" id="payloadsbtn">Payloads</button>
       <button class="menu-btn" id="generate-cache-btn">Force-Cache</button>
@@ -319,35 +321,28 @@ html,body{margin:0;background:#000;color:#fff;min-height:100%;font-family:sans-s
     </div>
     <script src='./js/index.js'></script>
   
-</div>
-
-               <input type="checkbox" id="ckbdc" checked />
-                <span>Enable Debug Console</span>
-              </label>
-          </div>
-        </div>
-      </div>
-      
-      <div class="button-container">
-        <button data-func="load_PSFreeFix" class="install-psfrf" id="install-psfrf" style="display: none;">Install PSFree-Fix</button>
-      </div>
-      <button onclick="closesettings()" class="close-btn" id="close-settings"></button>
-    </div>
-    <script src='./js/index.js'></script>
-  
 <script>
 (function(){
-  const start=document.getElementById('v9-start');
+  const start=document.getElementById('playground-start');
+  // Hide only the original PSFree frontend nodes. Dynamically-created exploit nodes
+  // (framesets, inputs, anchors) must remain unaffected by this CSS.
+  for (const el of Array.from(document.body.children)) {
+    if (el.id !== 'playground-control' && el.id !== 'DebugConsole') {
+      el.style.visibility='hidden';
+      el.style.pointerEvents='none';
+    }
+  }
   start.addEventListener('click', async function(){
     start.disabled=true;
-    start.textContent='Starting…';
+    document.getElementById('playground-control').classList.add('started');
+    // Keep the payload URL independent from the launcher directory.
     window.payload_path='/payloads/GoldHEN/GoldHEN.bin';
     try {
       await import('./alert.mjs');
     } catch(e) {
       alert('PSFree start failed\n'+e+'\n'+(e&&e.stack||''));
       start.disabled=false;
-      start.textContent='Start PSFree';
+      document.getElementById('playground-control').classList.remove('started');
     }
   }, {once:true});
 })();
