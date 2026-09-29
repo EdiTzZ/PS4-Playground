@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>PS4 Playground</title>
 <style>
-html,body{margin:0;background:#f4f7fb;color:#172033;min-height:100%;font-family:Arial,Helvetica,sans-serif}
+html,body{margin:0;background:#f4f7fb;color:#172033;min-height:100%;height:100%;overflow:hidden;font-family:Arial,Helvetica,sans-serif}
 /* Keep the original PSFree DOM present, but change only the appearance of the launcher. */
 #playground-control{
   visibility:visible;
@@ -371,6 +371,37 @@ html,body{margin:0;background:#f4f7fb;color:#172033;min-height:100%;font-family:
       document.getElementById('playground-control').classList.remove('started');
     }
   }, {once:true});
+})();
+</script>
+
+<script>
+(function(){
+  function scrollDebugConsole(){
+    var el=document.getElementById('console');
+    if(el){
+      el.scrollTop=el.scrollHeight;
+    }
+  }
+
+  function setupDebugConsole(){
+    var el=document.getElementById('console');
+    if(!el) return;
+
+    scrollDebugConsole();
+
+    if(window.MutationObserver){
+      var observer=new MutationObserver(function(){
+        scrollDebugConsole();
+      });
+      observer.observe(el,{childList:true,subtree:true,characterData:true});
+    }
+  }
+
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',setupDebugConsole);
+  }else{
+    setupDebugConsole();
+  }
 })();
 </script>
 
