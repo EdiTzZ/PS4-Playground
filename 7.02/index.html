@@ -12,35 +12,20 @@
   <body>
 
 	<nav class="navbar navbar-inverse" role="navigation">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="#">PS4 PSFree Kernel Exploit</a>
-		</div>
-
-		<div class="collapse navbar-collapse navbar-ex1-collapse">
-			<ul class="nav navbar-nav">
-				<li class="active"><a href="#">Welcome</a></li>
-				<li><a href="../psfree/launcher.html?payload=GoldHEN">GoldHEN</a></li>
-				<li><a href="../psfree/launcher.html?payload=HEN">HEN</a></li>
-				<li><a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FTools%2Fapp2usb.bin">App2USB</a></li>
-				<li><a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FTools%2Fftp.bin">FTP</a></li>
-				<li><a href="#payload-tools">PS4 Tools</a></li>
-				<li><a href="#payload-dumpers">Dumpers</a></li>
-				<li><a href="#payload-games">Game Mods</a></li>
-				<li><a href="#payload-linux">Linux</a></li>
-			</ul>
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="mods/index.html">Game Mods & PS4 Tools</a></li>
-			    <li><a href="../index.html">PS4 Playground Index</a></li>
-				<li><a href="#">Compatible Firmware: 7.00 - 9.60</a></li>
-			</ul>
-		</div>
-	</nav>
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+			<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="../index.html">PS4 7.02 PSFree</a>
+	</div>
+	<div class="collapse navbar-collapse navbar-ex1-collapse">
+		<ul class="nav navbar-nav"><li><a href="payloads/tools/index.html">PS4 Tools</a></li><li><a href="payloads/dumpers/index.html">Dumpers</a></li><li><a href="linux/index.html">Linux</a></li><li><a href="mods/index.html">Game Mods</a></li></ul>
+		<ul class="nav navbar-nav navbar-right">
+			<li><a href="../index.html">PS4 Playground Index</a></li>
+			<li><a href="#">Compatible Firmware: 7.02</a></li>
+		</ul>
+	</div>
+</nav>
     <div class="container">
 		<div id="tooltip"><b>CACHE STATUS:</b> Checking offline cache...</div>
 		<iframe id="appcacheInstaller" style="display: none;" src="install.html"></iframe>
@@ -64,7 +49,7 @@
 		- The page will crash on successful kernel exploitation, this is normal<br>
 		- There are a few races involved with this exploit, losing one of them and attempting the exploit again might not immediately crash the system but stability will take a hit
 		<br><br>
-		Don't miss the <a href="../psfree/launcher.html?payload=GoldHEN"><b>Game Mods & PS4 Tools</b></a> section (top right corner)!
+		Don't miss the <a href="mods/index.html"><b>Game Mods</b></a> section (top right corner)!
 		<br><br>
 		<font color="red"><b>I'm not responsible for any kind of damage on your PS4! Use it at your own risk!</b></font>
 		<br><br>
@@ -81,111 +66,13 @@
 		Anonymous
       </p>
       <hr />
-<center><div id="payload-jailbreak" style="margin-top:22px;"><h3>Jailbreak</h3>
-<a href="../psfree/launcher.html?payload=GoldHEN"><button type="button" class="btn btn-info">GoldHEN</button></a> 
-<a href="../psfree/launcher.html?payload=HEN"><button type="button" class="btn btn-primary">HEN</button></a> 
-</div>
-<div id="payload-dumpers" style="margin-top:22px;"><h3>Dumpers</h3>
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FDumper%2Fapp-dumper.bin"><button type="button" class="btn btn-info">App-Dumper</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FDumper%2Fkernel-dumper.bin"><button type="button" class="btn btn-primary">Kernel-Dumper</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FDumper%2Fmodule-dumper.bin"><button type="button" class="btn btn-danger">Module-Dumper</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FDumper%2Fps4-dumper-vtx-900.bin"><button type="button" class="btn btn-success">PS4-Dumper-VTX</button></a> 
-</div>
-<div id="payload-tools" style="margin-top:22px;"><h3>PS4 Tools</h3>
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FTools%2FOrbis-Toolbox-900.bin"><button type="button" class="btn btn-info">Orbis Toolbox 9.00</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FTools%2FToCex.bin"><button type="button" class="btn btn-primary">ToCex</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FTools%2FToDev.bin"><button type="button" class="btn btn-danger">ToDev</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FTools%2FToDex.bin"><button type="button" class="btn btn-success">ToDex</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FTools%2FToKratos.bin"><button type="button" class="btn btn-info">ToKratos</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FTools%2FWebRTE_900.bin"><button type="button" class="btn btn-primary">WebRTE 9.00</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FTools%2Fapp2usb.bin"><button type="button" class="btn btn-danger">App2USB</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FTools%2Fappcache-install.bin"><button type="button" class="btn btn-success">AppCache Install</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FTools%2Fbackup.bin"><button type="button" class="btn btn-info">DB Backup</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FTools%2Fdisable-aslr.bin"><button type="button" class="btn btn-primary">Disable ASLR</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FTools%2Fdisable-updates.bin"><button type="button" class="btn btn-danger">Disable Updates</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FTools%2Fenable-browser.bin"><button type="button" class="btn btn-success">Enable Browser</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FTools%2Fenable-updates.bin"><button type="button" class="btn btn-info">Enable Updates</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FTools%2Fexit-idu.bin"><button type="button" class="btn btn-primary">Exit IDU</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FTools%2Fftp.bin"><button type="button" class="btn btn-danger">FTP</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FTools%2Fhistory-blocker.bin"><button type="button" class="btn btn-success">History Blocker</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FTools%2Fkernel-clock.bin"><button type="button" class="btn btn-info">Kernel Clock</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FTools%2Fpermanent-uart.bin"><button type="button" class="btn btn-primary">Permanent UART</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FTools%2Fps4-psfree-fix.bin"><button type="button" class="btn btn-danger">PSFree Fix</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FTools%2Fps4debug.bin"><button type="button" class="btn btn-success">PS4Debug</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FTools%2Fpup-decrypt.bin"><button type="button" class="btn btn-info">PUP Decrypt</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FTools%2Frestore.bin"><button type="button" class="btn btn-primary">DB Restore</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FTools%2Frif-renamer.bin"><button type="button" class="btn btn-danger">RIF Renamer</button></a> 
-</div>
-<div id="payload-games" style="margin-top:22px;"><h3>Game Mods</h3>
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FGTA%2FArabicGuy-1.0-1.27-rfoodxmodz.bin"><button type="button" class="btn btn-info">ArabicGuy-1.0-1.27-rfoodxmodz</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FGTA%2FArabicGuy-1.0-1.32-rfoodxmodz.bin"><button type="button" class="btn btn-primary">ArabicGuy-1.0-1.32-rfoodxmodz</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FGTA%2FArabicGuy-1.0-1.33-rfoodxmodz.bin"><button type="button" class="btn btn-danger">ArabicGuy-1.0-1.33-rfoodxmodz</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FGTA%2FBeefQueefMod-1.33.bin"><button type="button" class="btn btn-success">BeefQueefMod-1.33</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FGTA%2FBeefQueefMod-1.34.bin"><button type="button" class="btn btn-info">BeefQueefMod-1.34</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FGTA%2FBeefQueefMod-1.38.bin"><button type="button" class="btn btn-primary">BeefQueefMod-1.38</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FGTA%2FWildeModz-1.32.bin"><button type="button" class="btn btn-danger">WildeModz-1.32</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FGTA%2FWildeModz-1.33.bin"><button type="button" class="btn btn-success">WildeModz-1.33</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FGTA%2FWildeModz-1.38.bin"><button type="button" class="btn btn-info">WildeModz-1.38</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FRDR2%2FOystersMenu-1.00-FREE.bin"><button type="button" class="btn btn-primary">OystersMenu-1.00</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FRDR2%2FOystersMenu-1.13-FREE.bin"><button type="button" class="btn btn-danger">OystersMenu-1.13</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FRDR2%2FOystersMenu-1.19-FREE.bin"><button type="button" class="btn btn-success">OystersMenu-1.19</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FRDR2%2FOystersMenu-1.24-FREE.bin"><button type="button" class="btn btn-info">OystersMenu-1.24</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FRDR2%2FOystersMenu-1.29-FREE.bin"><button type="button" class="btn btn-primary">OystersMenu-1.29</button></a> 
-</div>
-<div id="payload-linux" style="margin-top:22px;"><h3>Linux</h3>
-<p><b>Linux Payloads für Firmware 9.00</b></p>
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FLinux%2Ffw900%2Fpayload-900-1gb-baikal.bin"><button type="button" class="btn btn-info">FW 900 • 1 GB • Baikal</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FLinux%2Ffw900%2Fpayload-900-1gb-pro-baikal.bin"><button type="button" class="btn btn-primary">FW 900 • 1 GB • PRO Baikal</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FLinux%2Ffw900%2Fpayload-900-1gb-pro.bin"><button type="button" class="btn btn-danger">FW 900 • 1 GB • PRO</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FLinux%2Ffw900%2Fpayload-900-1gb.bin"><button type="button" class="btn btn-success">FW 900 • 1 GB</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FLinux%2Ffw900%2Fpayload-900-2gb-baikal.bin"><button type="button" class="btn btn-info">FW 900 • 2 GB • Baikal</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FLinux%2Ffw900%2Fpayload-900-2gb-pro-baikal.bin"><button type="button" class="btn btn-primary">FW 900 • 2 GB • PRO Baikal</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FLinux%2Ffw900%2Fpayload-900-2gb-pro.bin"><button type="button" class="btn btn-danger">FW 900 • 2 GB • PRO</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FLinux%2Ffw900%2Fpayload-900-2gb.bin"><button type="button" class="btn btn-success">FW 900 • 2 GB</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FLinux%2Ffw900%2Fpayload-900-3gb-baikal.bin"><button type="button" class="btn btn-info">FW 900 • 3 GB • Baikal</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FLinux%2Ffw900%2Fpayload-900-3gb-pro-baikal.bin"><button type="button" class="btn btn-primary">FW 900 • 3 GB • PRO Baikal</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FLinux%2Ffw900%2Fpayload-900-3gb-pro.bin"><button type="button" class="btn btn-danger">FW 900 • 3 GB • PRO</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FLinux%2Ffw900%2Fpayload-900-3gb.bin"><button type="button" class="btn btn-success">FW 900 • 3 GB</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FLinux%2Ffw900%2Fpayload-900-4gb-baikal.bin"><button type="button" class="btn btn-info">FW 900 • 4 GB • Baikal</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FLinux%2Ffw900%2Fpayload-900-4gb-pro-baikal.bin"><button type="button" class="btn btn-primary">FW 900 • 4 GB • PRO Baikal</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FLinux%2Ffw900%2Fpayload-900-4gb-pro.bin"><button type="button" class="btn btn-danger">FW 900 • 4 GB • PRO</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FLinux%2Ffw900%2Fpayload-900-4gb.bin"><button type="button" class="btn btn-success">FW 900 • 4 GB</button></a> 
-<p><b>Linux Payloads für Firmware 9.03</b></p>
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FLinux%2Ffw903%2Fpayload-903-1gb-baikal.bin"><button type="button" class="btn btn-info">FW 903 • 1 GB • Baikal</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FLinux%2Ffw903%2Fpayload-903-1gb-pro-baikal.bin"><button type="button" class="btn btn-primary">FW 903 • 1 GB • PRO Baikal</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FLinux%2Ffw903%2Fpayload-903-1gb-pro.bin"><button type="button" class="btn btn-danger">FW 903 • 1 GB • PRO</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FLinux%2Ffw903%2Fpayload-903-1gb.bin"><button type="button" class="btn btn-success">FW 903 • 1 GB</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FLinux%2Ffw903%2Fpayload-903-2gb-baikal.bin"><button type="button" class="btn btn-info">FW 903 • 2 GB • Baikal</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FLinux%2Ffw903%2Fpayload-903-2gb-pro-baikal.bin"><button type="button" class="btn btn-primary">FW 903 • 2 GB • PRO Baikal</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FLinux%2Ffw903%2Fpayload-903-2gb-pro.bin"><button type="button" class="btn btn-danger">FW 903 • 2 GB • PRO</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FLinux%2Ffw903%2Fpayload-903-2gb.bin"><button type="button" class="btn btn-success">FW 903 • 2 GB</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FLinux%2Ffw903%2Fpayload-903-3gb-baikal.bin"><button type="button" class="btn btn-info">FW 903 • 3 GB • Baikal</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FLinux%2Ffw903%2Fpayload-903-3gb-pro-baikal.bin"><button type="button" class="btn btn-primary">FW 903 • 3 GB • PRO Baikal</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FLinux%2Ffw903%2Fpayload-903-3gb-pro.bin"><button type="button" class="btn btn-danger">FW 903 • 3 GB • PRO</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FLinux%2Ffw903%2Fpayload-903-3gb.bin"><button type="button" class="btn btn-success">FW 903 • 3 GB</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FLinux%2Ffw903%2Fpayload-903-4gb-baikal.bin"><button type="button" class="btn btn-info">FW 903 • 4 GB • Baikal</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FLinux%2Ffw903%2Fpayload-903-4gb-pro-baikal.bin"><button type="button" class="btn btn-primary">FW 903 • 4 GB • PRO Baikal</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FLinux%2Ffw903%2Fpayload-903-4gb-pro.bin"><button type="button" class="btn btn-danger">FW 903 • 4 GB • PRO</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FLinux%2Ffw903%2Fpayload-903-4gb.bin"><button type="button" class="btn btn-success">FW 903 • 4 GB</button></a> 
-<p><b>Linux Payloads für Firmware 9.60</b></p>
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FLinux%2Ffw960%2Fpayload-960-1gb-baikal.bin"><button type="button" class="btn btn-info">FW 960 • 1 GB • Baikal</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FLinux%2Ffw960%2Fpayload-960-1gb-pro-baikal.bin"><button type="button" class="btn btn-primary">FW 960 • 1 GB • PRO Baikal</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FLinux%2Ffw960%2Fpayload-960-1gb-pro.bin"><button type="button" class="btn btn-danger">FW 960 • 1 GB • PRO</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FLinux%2Ffw960%2Fpayload-960-1gb.bin"><button type="button" class="btn btn-success">FW 960 • 1 GB</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FLinux%2Ffw960%2Fpayload-960-2gb-baikal.bin"><button type="button" class="btn btn-info">FW 960 • 2 GB • Baikal</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FLinux%2Ffw960%2Fpayload-960-2gb-pro-baikal.bin"><button type="button" class="btn btn-primary">FW 960 • 2 GB • PRO Baikal</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FLinux%2Ffw960%2Fpayload-960-2gb-pro.bin"><button type="button" class="btn btn-danger">FW 960 • 2 GB • PRO</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FLinux%2Ffw960%2Fpayload-960-2gb.bin"><button type="button" class="btn btn-success">FW 960 • 2 GB</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FLinux%2Ffw960%2Fpayload-960-3gb-baikal.bin"><button type="button" class="btn btn-info">FW 960 • 3 GB • Baikal</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FLinux%2Ffw960%2Fpayload-960-3gb-pro-baikal.bin"><button type="button" class="btn btn-primary">FW 960 • 3 GB • PRO Baikal</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FLinux%2Ffw960%2Fpayload-960-3gb-pro.bin"><button type="button" class="btn btn-danger">FW 960 • 3 GB • PRO</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FLinux%2Ffw960%2Fpayload-960-3gb.bin"><button type="button" class="btn btn-success">FW 960 • 3 GB</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FLinux%2Ffw960%2Fpayload-960-4gb-baikal.bin"><button type="button" class="btn btn-info">FW 960 • 4 GB • Baikal</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FLinux%2Ffw960%2Fpayload-960-4gb-pro-baikal.bin"><button type="button" class="btn btn-primary">FW 960 • 4 GB • PRO Baikal</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FLinux%2Ffw960%2Fpayload-960-4gb-pro.bin"><button type="button" class="btn btn-danger">FW 960 • 4 GB • PRO</button></a> 
-<a href="../psfree/launcher.html?payload=%2Fpayloads%2FBins%2FLinux%2Ffw960%2Fpayload-960-4gb.bin"><button type="button" class="btn btn-success">FW 960 • 4 GB</button></a> 
-</div></center>
-      <p class="text-muted"><small>Hinweis: Die Linux-Payloads sind für die jeweils angegebene 9.x-Firmware gebaut und erscheinen hier nur, weil sie im gemeinsamen <code>payloads/</code>-Verzeichnis vorhanden sind.</small></p>
+	  <center>
+<a href="./payloads/tools/index.html"><button type="button" class="btn btn-info">PS4 Tools</button></a>
+<a href="./linux/index.html"><button type="button" class="btn btn-success">Linux</button></a>
+<a href="./payloads/dumpers/index.html"><button type="button" class="btn btn-danger">Dumpers</button></a>
+<a href="./payloads/tools/index.html"><button type="button" class="btn btn-primary">Tools</button></a>
+<a href="./mods/index.html"><button type="button" class="btn btn-info">Game Mods</button></a>
+</center>
     </div>
 
 	  <hr>
