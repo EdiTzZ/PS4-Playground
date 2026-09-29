@@ -130,6 +130,35 @@ html,body{margin:0;background:#f4f7fb;color:#172033;min-height:100%;height:100%;
 #playground-control.started::before,
 #playground-control.started::after{display:none}
 #playground-control.started #playground-start{display:none}
+.loader{
+  position:absolute;
+  left:50%;
+  top:calc(16% + 155px);
+  margin-left:-18px;
+  width:36px;
+  height:36px;
+  display:none;
+  z-index:10002;
+}
+
+.loader-circle{
+  width:36px;
+  height:36px;
+  box-sizing:border-box;
+  border:4px solid rgba(22,137,232,.20);
+  border-top-color:#1689e8;
+  border-radius:50%;
+  animation:playground-loader-spin .8s linear infinite;
+}
+
+@keyframes playground-loader-spin{
+  from{transform:rotate(0deg)}
+  to{transform:rotate(360deg)}
+}
+
+#playground-control.started .loader{
+  display:block!important;
+}
 </style>
 </head>
 <body>
