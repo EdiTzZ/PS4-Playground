@@ -2005,6 +2005,6 @@ function LoadPayload(){
       document.getElementById('jailbreak').style.display = 'flex';
       document.getElementById('loader').style.display = 'none';
     }
-    window.location.href = '/7.02/';
+    window.location.href = '/psfree/';
   }, 5000);
 }
